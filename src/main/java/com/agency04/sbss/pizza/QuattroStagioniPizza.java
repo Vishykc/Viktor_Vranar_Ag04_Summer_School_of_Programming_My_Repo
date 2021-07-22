@@ -2,12 +2,12 @@ package com.agency04.sbss.pizza;
 
 import java.util.ArrayList;
 
-public class QuattroStagioniPizza implements  Pizza{
+public class QuattroStagioniPizza implements  Pizza {
     private String name;
     private ArrayList<String> ingredients;
 
-    public Pizza(){
-        name = "QuattroStagioni"
+    public QuattroStagioniPizza() {
+        name = "QuattroStagioni";
         ingredients = new ArrayList<String>();
         ingredients.add("tomato sauce");
         ingredients.add("mozzarella");
@@ -16,7 +16,6 @@ public class QuattroStagioniPizza implements  Pizza{
         ingredients.add("olives");
         ingredients.add("oregano");
     }
-
 
 
     @Override
@@ -28,3 +27,6 @@ public class QuattroStagioniPizza implements  Pizza{
     public ArrayList<String> getIngredients() {
         return ingredients;
     }
+
+
+}

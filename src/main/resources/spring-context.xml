@@ -9,4 +9,16 @@
 
     <!-- Define your Beans here -->
 
+    <bean id="myDelivery"
+          class="com.agency04.sbss.pizza.PizzaDeliveryService">
+        <constructor-arg ref="myFirstPizzeria"/>
+    </bean>
+
+    <bean id="myFirstPizzeria"
+          class="com.agency04.sbss.pizza.FirstPizzeriaService">
+    </bean>
+
+
+
+
 </beans>

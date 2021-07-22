@@ -1,26 +1,30 @@
 package com.agency04.sbss.pizza;
 
-public class PizzaDeliveryService implements PizzeriaService{
-    //Pizza pizza;
+import java.util.ArrayList;
 
+public class PizzaDeliveryService {
 
-    public String orderPizza(Pizza thePizza){
-        return "description of the order";
+    private FirstPizzeriaService firstPizzeriaService;
+
+    public PizzaDeliveryService(){
+
     }
 
-    @Override
-    public String getName() {
-        //return pizza.name;
-        return null;
+    public PizzaDeliveryService(FirstPizzeriaService theFirstPizzeriaService){
+        firstPizzeriaService = theFirstPizzeriaService;
     }
 
-    @Override
-    public String getAdress() {
-        return null;
+    /*private String name = "Viktor Vranar";
+    private String address = "Jordanovac 115, 10 000 Zagreb";
+    private Pizza pizza;*/
+
+
+    public void orderPizza(Pizza thePizza) {
+        firstPizzeriaService.makePizza(thePizza);
+
+        System.out.println("\nDetails of the order:\nname: " + firstPizzeriaService.getName() + "\naddress: " + firstPizzeriaService.getAddress() + "\npizza: " + firstPizzeriaService.getPizza().getName() + "\n");
+
+        System.out.println("The order of pizza has finished!");
     }
 
-    @Override
-    public String makePizza(Pizza thePizza) {
-        return null;
-    }
 }

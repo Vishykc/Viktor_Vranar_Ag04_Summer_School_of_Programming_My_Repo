@@ -6,8 +6,11 @@ public class MargheritaPizza implements  Pizza{
     private String name;
     private ArrayList<String> ingredients;
 
-    public Pizza(){
-        name = "Margerita"
+
+
+
+    public MargheritaPizza(){
+        name = "Margerita";
         ingredients = new ArrayList<String>();
         ingredients.add("tomato sauce");
         ingredients.add("mozzarella");
@@ -17,12 +20,8 @@ public class MargheritaPizza implements  Pizza{
 
 
     @Override
-    public String getName() {
-        return name;
-    }
+    public String getName() { return name; }
 
     @Override
-    public ArrayList<String> getIngredients() {
-        return ingredients;
-    }
+    public ArrayList<String> getIngredients() { return ingredients; }
 }

@@ -1,7 +1,7 @@
 package com.agency04.sbss.pizza;
 
 public interface PizzeriaService {
-    public String getName();
-    public String getAdress();
-    public String makePizza(Pizza thePizza);
+    String getName();
+    String getAddress();
+    void makePizza(Pizza thePizza);
 }

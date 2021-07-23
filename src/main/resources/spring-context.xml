@@ -7,15 +7,27 @@
        http://www.springframework.org/schema/context
        http://www.springframework.org/schema/context/spring-context.xsd">
 
+
+    <context:property-placeholder location="classpath:application.properties"/>
+
     <!-- Define your Beans here -->
+
+    <bean id="myFirstPizzeria"
+          class="com.agency04.sbss.pizza.FirstPizzeriaService">
+        <property name="name" value="Viktor Vranar"/>
+        <property name="address" value="Jordanovac 115, 10 000 Zagreb"/>
+    </bean>
+
+    <bean id="mySecondPizzeria"
+          class="com.agency04.sbss.pizza.SecondPizzeriaService">
+        <property name="name" value="${SecondPizzeriaService.name}"/>
+        <property name="address" value="${SecondPizzeriaService.address}"/>
+    </bean>
 
     <bean id="myDelivery"
           class="com.agency04.sbss.pizza.PizzaDeliveryService">
         <constructor-arg ref="myFirstPizzeria"/>
-    </bean>
-
-    <bean id="myFirstPizzeria"
-          class="com.agency04.sbss.pizza.FirstPizzeriaService">
+        <property name="secondPizzeriaService" ref="mySecondPizzeria"/>
     </bean>
 
 

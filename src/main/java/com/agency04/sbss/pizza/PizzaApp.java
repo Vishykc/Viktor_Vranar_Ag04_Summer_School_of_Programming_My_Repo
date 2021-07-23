@@ -8,14 +8,11 @@ public class PizzaApp {
         // Add some pizza code
         ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("spring-context.xml");
         PizzaDeliveryService thePizzaDeliveryService = (PizzaDeliveryService) context.getBean("myDelivery");
-        Pizza pizza = new MargheritaPizza();
+
+        Pizza pizza = new DiavolaPizza();
         thePizzaDeliveryService.orderPizza(pizza);
-
-
-
 
         context.close();
 
     }
-
 }

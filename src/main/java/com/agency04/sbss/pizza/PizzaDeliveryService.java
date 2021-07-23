@@ -1,30 +1,49 @@
 package com.agency04.sbss.pizza;
 
-import java.util.ArrayList;
+import java.util.stream.Collectors;
 
 public class PizzaDeliveryService {
 
-    private FirstPizzeriaService firstPizzeriaService;
+    private PizzeriaService firstPizzeriaService;
+    private PizzeriaService secondPizzeriaService;
 
-    public PizzaDeliveryService(){
+    public PizzaDeliveryService(){ }
 
-    }
-
-    public PizzaDeliveryService(FirstPizzeriaService theFirstPizzeriaService){
+    public PizzaDeliveryService(PizzeriaService theFirstPizzeriaService){
         firstPizzeriaService = theFirstPizzeriaService;
     }
 
-    /*private String name = "Viktor Vranar";
-    private String address = "Jordanovac 115, 10 000 Zagreb";
-    private Pizza pizza;*/
-
-
-    public void orderPizza(Pizza thePizza) {
-        firstPizzeriaService.makePizza(thePizza);
-
-        System.out.println("\nDetails of the order:\nname: " + firstPizzeriaService.getName() + "\naddress: " + firstPizzeriaService.getAddress() + "\npizza: " + firstPizzeriaService.getPizza().getName() + "\n");
-
-        System.out.println("The order of pizza has finished!");
+    public void setSecondPizzeriaService(PizzeriaService theSecondPizzeriaService){
+        secondPizzeriaService = theSecondPizzeriaService;
     }
 
+    public void orderPizza(Pizza thePizza) {
+        System.out.println("\nWe have received a pizza order!");
+
+        firstPizzeriaService.makePizza(thePizza);
+
+        System.out.println("Details of the order:\nname: "
+                + firstPizzeriaService.getName()
+                + "\naddress: "
+                + firstPizzeriaService.getAddress()
+                + "\npizza: "
+                + firstPizzeriaService.getPizza().getName() + " ("
+                + thePizza.getIngredients().stream()
+                .map(Object::toString)
+                .collect(Collectors.joining(", ")) + ")\n");
+
+        System.out.println("\nWe have received a pizza order!");
+
+        secondPizzeriaService.makePizza(thePizza);
+
+        System.out.println("Details of the order:\nname: "
+                + secondPizzeriaService.getName()
+                + "\naddress: "
+                + secondPizzeriaService.getAddress()
+                + "\npizza: "
+                + secondPizzeriaService.getPizza().getName() + " ("
+                + thePizza.getIngredients().stream()
+                .map(Object::toString)
+                .collect(Collectors.joining(", ")) + ")\n");
+    }
 }

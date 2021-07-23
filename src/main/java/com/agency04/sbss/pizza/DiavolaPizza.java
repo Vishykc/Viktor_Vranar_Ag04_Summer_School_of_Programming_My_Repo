@@ -15,7 +15,6 @@ public class DiavolaPizza implements  Pizza {
         ingredients.add("chilli pepper");
     }
 
-
     @Override
     public String getName() {
         return name;

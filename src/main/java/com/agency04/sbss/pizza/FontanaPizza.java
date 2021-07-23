@@ -2,16 +2,18 @@ package com.agency04.sbss.pizza;
 
 import java.util.ArrayList;
 
-public class MargheritaPizza implements  Pizza{
+public class FontanaPizza implements  Pizza{
     private String name;
     private ArrayList<String> ingredients;
 
-    public MargheritaPizza(){
-        name = "Margerita";
+    public FontanaPizza(){
+        name = "Fontana";
         ingredients = new ArrayList<>();
         ingredients.add("tomato sauce");
         ingredients.add("mozzarella");
-        ingredients.add("oregano");
+        ingredients.add("gorgonzola cheese");
+        ingredients.add("radicchio");
+        ingredients.add("parmesan");
     }
 
     @Override

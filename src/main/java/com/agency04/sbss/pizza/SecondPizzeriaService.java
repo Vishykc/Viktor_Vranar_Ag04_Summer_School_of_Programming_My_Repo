@@ -1,6 +1,6 @@
 package com.agency04.sbss.pizza;
 
-public class FirstPizzeriaService implements PizzeriaService{
+public class SecondPizzeriaService implements PizzeriaService{
     private String name;
     private String address;
     private Pizza pizza;
@@ -13,7 +13,7 @@ public class FirstPizzeriaService implements PizzeriaService{
         this.address = address;
     }
 
-    public FirstPizzeriaService(){ }
+    public SecondPizzeriaService(){ }
 
     @Override
     public String getName() {
@@ -33,6 +33,7 @@ public class FirstPizzeriaService implements PizzeriaService{
     @Override
     public void makePizza(Pizza thePizza) {
         pizza = thePizza;
-        System.out.println("A delicious pizza has been made by FirstPizzeriaService!");
+        System.out.println("A delicious pizza has been made by SecondPizzeriaService!");
     }
 }
+

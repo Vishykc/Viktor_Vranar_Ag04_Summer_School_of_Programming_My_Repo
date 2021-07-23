@@ -17,7 +17,6 @@ public class QuattroStagioniPizza implements  Pizza {
         ingredients.add("oregano");
     }
 
-
     @Override
     public String getName() {
         return name;
@@ -27,6 +26,4 @@ public class QuattroStagioniPizza implements  Pizza {
     public ArrayList<String> getIngredients() {
         return ingredients;
     }
-
-
 }

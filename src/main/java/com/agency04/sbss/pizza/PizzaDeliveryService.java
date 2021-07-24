@@ -1,21 +1,31 @@
 package com.agency04.sbss.pizza;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
+
 import java.util.stream.Collectors;
 
+@Component("myDelivery")
 public class PizzaDeliveryService {
 
+    @Autowired
+    @Qualifier("myFirstPizzeria")
     private PizzeriaService firstPizzeriaService;
+
+    @Autowired
+    @Qualifier("mySecondPizzeria")
     private PizzeriaService secondPizzeriaService;
 
     public PizzaDeliveryService(){ }
 
-    public PizzaDeliveryService(PizzeriaService theFirstPizzeriaService){
+    /*public PizzaDeliveryService(PizzeriaService theFirstPizzeriaService){
         firstPizzeriaService = theFirstPizzeriaService;
-    }
+    }*/
 
-    public void setSecondPizzeriaService(PizzeriaService theSecondPizzeriaService){
+    /*public void setSecondPizzeriaService(PizzeriaService theSecondPizzeriaService){
         secondPizzeriaService = theSecondPizzeriaService;
-    }
+    }*/
 
     public void orderPizza(Pizza thePizza) {
         System.out.println("\nWe have received a pizza order!");

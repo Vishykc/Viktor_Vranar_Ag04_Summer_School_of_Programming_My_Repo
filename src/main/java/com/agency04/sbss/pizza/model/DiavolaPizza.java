@@ -1,18 +1,20 @@
 package com.agency04.sbss.pizza.model;
 
+
 import java.util.ArrayList;
+import java.util.Collection;
 
 public class DiavolaPizza implements  Pizza {
-    private String name;
-    private ArrayList<String> ingredients;
+    private final String name;
+    private final Collection<String> ingredients;
 
     public DiavolaPizza() {
         name = "Diavola";
-        ingredients = new ArrayList<String>();
-        ingredients.add("tomato sauce");
-        ingredients.add("mozzarella");
-        ingredients.add("spicy salami");
-        ingredients.add("chilli pepper");
+        ingredients = new ArrayList<>();
+        ingredients.add(PizzaIngredient.TOS.getLabel());
+        ingredients.add(PizzaIngredient.MOZ.getLabel());
+        ingredients.add(PizzaIngredient.SPS.getLabel());
+        ingredients.add(PizzaIngredient.CHI.getLabel());
     }
 
     @Override
@@ -21,7 +23,7 @@ public class DiavolaPizza implements  Pizza {
     }
 
     @Override
-    public ArrayList<String> getIngredients() {
+    public Collection<String> getIngredients() {
         return ingredients;
     }
 }

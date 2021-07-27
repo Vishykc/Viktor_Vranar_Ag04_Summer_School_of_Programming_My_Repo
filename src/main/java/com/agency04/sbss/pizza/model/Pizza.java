@@ -1,8 +1,8 @@
 package com.agency04.sbss.pizza.model;
 
-import java.util.ArrayList;
+import java.util.Collection;
 
 public interface Pizza {
     String getName();
-    ArrayList<String> getIngredients();
+    Collection<String> getIngredients();
 }

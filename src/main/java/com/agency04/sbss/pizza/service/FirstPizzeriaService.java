@@ -13,36 +13,26 @@ public class FirstPizzeriaService implements PizzeriaService{
     @Value("Jordanovac 115, 10 000 Zagreb")
     private String address;
 
-    private Pizza pizza;
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
     public FirstPizzeriaService(){ }
 
     @Override
     public String getName() {
         return name;
     }
+    public void setName(String name) {
+        this.name = name;
+    }
 
     @Override
     public String getAddress() {
         return address;
     }
-
-    @Override
-    public Pizza getPizza() {
-        return pizza;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     @Override
     public void makePizza(Pizza thePizza) {
-        pizza = thePizza;
         System.out.println("A delicious pizza has been made by FirstPizzeriaService!");
     }
 }

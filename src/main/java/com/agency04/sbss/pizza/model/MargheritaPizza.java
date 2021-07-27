@@ -1,22 +1,23 @@
 package com.agency04.sbss.pizza.model;
 
 import java.util.ArrayList;
+import java.util.Collection;
 
-public class MargheritaPizza implements  Pizza{
-    private String name;
-    private ArrayList<String> ingredients;
+public class MargheritaPizza implements  Pizza {
+    private final String name;
+    private final Collection<String> ingredients;
 
     public MargheritaPizza(){
         name = "Margerita";
         ingredients = new ArrayList<>();
-        ingredients.add("tomato sauce");
-        ingredients.add("mozzarella");
-        ingredients.add("oregano");
+        ingredients.add(PizzaIngredient.TOS.getLabel());
+        ingredients.add(PizzaIngredient.MOZ.getLabel());
+        ingredients.add(PizzaIngredient.ORE.getLabel());
     }
 
     @Override
     public String getName() { return name; }
 
     @Override
-    public ArrayList<String> getIngredients() { return ingredients; }
+    public Collection<String> getIngredients() { return ingredients; }
 }

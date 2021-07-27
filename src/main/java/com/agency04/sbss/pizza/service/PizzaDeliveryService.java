@@ -20,14 +20,6 @@ public class PizzaDeliveryService {
 
     public PizzaDeliveryService(){ }
 
-    /*public PizzaDeliveryService(PizzeriaService theFirstPizzeriaService){
-        firstPizzeriaService = theFirstPizzeriaService;
-    }*/
-
-    /*public void setSecondPizzeriaService(PizzeriaService theSecondPizzeriaService){
-        secondPizzeriaService = theSecondPizzeriaService;
-    }*/
-
     public void orderPizza(Pizza thePizza) {
         System.out.println("\nWe have received a pizza order!");
 
@@ -38,7 +30,7 @@ public class PizzaDeliveryService {
                 + "\naddress: "
                 + firstPizzeriaService.getAddress()
                 + "\npizza: "
-                + firstPizzeriaService.getPizza().getName() + " ("
+                + thePizza.getName() + " ("
                 + thePizza.getIngredients().stream()
                 .map(Object::toString)
                 .collect(Collectors.joining(", ")) + ")\n");
@@ -52,7 +44,7 @@ public class PizzaDeliveryService {
                 + "\naddress: "
                 + secondPizzeriaService.getAddress()
                 + "\npizza: "
-                + secondPizzeriaService.getPizza().getName() + " ("
+                + thePizza.getName() + " ("
                 + thePizza.getIngredients().stream()
                 .map(Object::toString)
                 .collect(Collectors.joining(", ")) + ")\n");

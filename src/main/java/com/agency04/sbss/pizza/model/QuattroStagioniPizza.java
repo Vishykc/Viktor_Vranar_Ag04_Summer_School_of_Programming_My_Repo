@@ -1,20 +1,21 @@
 package com.agency04.sbss.pizza.model;
 
 import java.util.ArrayList;
+import java.util.Collection;
 
 public class QuattroStagioniPizza implements  Pizza {
-    private String name;
-    private ArrayList<String> ingredients;
+    private final String name;
+    private final Collection<String> ingredients;
 
     public QuattroStagioniPizza() {
         name = "QuattroStagioni";
-        ingredients = new ArrayList<String>();
-        ingredients.add("tomato sauce");
-        ingredients.add("mozzarella");
-        ingredients.add("ham");
-        ingredients.add("artichokes");
-        ingredients.add("olives");
-        ingredients.add("oregano");
+        ingredients = new ArrayList<>();
+        ingredients.add(PizzaIngredient.TOS.getLabel());
+        ingredients.add(PizzaIngredient.MOZ.getLabel());
+        ingredients.add(PizzaIngredient.HAM.getLabel());
+        ingredients.add(PizzaIngredient.ART.getLabel());
+        ingredients.add(PizzaIngredient.OLI.getLabel());
+        ingredients.add(PizzaIngredient.ORE.getLabel());
     }
 
     @Override
@@ -23,7 +24,7 @@ public class QuattroStagioniPizza implements  Pizza {
     }
 
     @Override
-    public ArrayList<String> getIngredients() {
+    public Collection<String> getIngredients() {
         return ingredients;
     }
 }

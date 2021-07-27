@@ -1,15 +1,26 @@
 package com.agency04.sbss.pizza.model;
 
 public enum PizzaIngredient {
-    ARTICHOKES,
-    CHILLY_PEPPER,
-    GORGONZOLA_CHEESE,
-    HAM,
-    MOZZARELLA,
-    OLIVES,
-    OREGANO,
-    PARMESAN,
-    RADICCHIO,
-    SPICY_SALAMY,
-    TOMATO_SAUCE;
+    ART("artichokes"),
+    CHI("chilly pepper"),
+    GOR("gorgonzola"),
+    HAM("ham"),
+    MOZ("mozzarella"),
+    OLI("olives"),
+    ORE("oregano"),
+    PAR("parmesan"),
+    RAD("radicchio"),
+    SPS("spicy salamy"),
+    TOS("tomato sauce");
+
+    private final String label;
+
+    public String getLabel() {
+        return label;
+    }
+
+    PizzaIngredient(String label) {
+        this.label = label;
+    }
+
 }

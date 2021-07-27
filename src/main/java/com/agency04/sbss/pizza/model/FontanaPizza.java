@@ -1,24 +1,25 @@
 package com.agency04.sbss.pizza.model;
 
 import java.util.ArrayList;
+import java.util.Collection;
 
-public class FontanaPizza implements  Pizza{
-    private String name;
-    private ArrayList<String> ingredients;
+public class FontanaPizza implements  Pizza {
+    private final String name;
+    private final Collection<String> ingredients;
 
     public FontanaPizza(){
         name = "Fontana";
         ingredients = new ArrayList<>();
-        ingredients.add("tomato sauce");
-        ingredients.add("mozzarella");
-        ingredients.add("gorgonzola cheese");
-        ingredients.add("radicchio");
-        ingredients.add("parmesan");
+        ingredients.add(PizzaIngredient.TOS.getLabel());
+        ingredients.add(PizzaIngredient.MOZ.getLabel());
+        ingredients.add(PizzaIngredient.GOR.getLabel());
+        ingredients.add(PizzaIngredient.RAD.getLabel());
+        ingredients.add(PizzaIngredient.PAR.getLabel());
     }
 
     @Override
     public String getName() { return name; }
 
     @Override
-    public ArrayList<String> getIngredients() { return ingredients; }
+    public Collection<String> getIngredients() { return ingredients; }
 }

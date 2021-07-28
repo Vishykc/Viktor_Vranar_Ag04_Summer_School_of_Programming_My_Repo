@@ -1,15 +1,12 @@
 package com.agency04.sbss.pizza.service;
 
 import com.agency04.sbss.pizza.model.Pizza;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 
 @Component("mySecondPizzeria")
-@Scope("prototype")
 public class SecondPizzeriaService implements PizzeriaService{
     private String name;
     private String address;
@@ -19,8 +16,8 @@ public class SecondPizzeriaService implements PizzeriaService{
     @PostConstruct
     public void doMyStartupStuff() {
         System.out.println(">> SecondPizzeriaService: inside of doMyStartupStuff");
-        name="Antea Tinodi";
-        address="Ul. Frana Galovica 13, 48 000 Koprivnica";
+        name = "Antea Tinodi";
+        address = "Ul. Frana Galovica 13, 48 000 Koprivnica";
     }
 
     @Override

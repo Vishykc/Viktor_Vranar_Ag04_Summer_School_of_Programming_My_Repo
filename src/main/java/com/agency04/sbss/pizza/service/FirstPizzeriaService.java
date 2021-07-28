@@ -9,7 +9,6 @@ import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 
 @Component("myFirstPizzeria")
-@Scope("singleton")
 public class FirstPizzeriaService implements PizzeriaService {
     private String name;
     private String address;
@@ -20,8 +19,8 @@ public class FirstPizzeriaService implements PizzeriaService {
     @PostConstruct
     public void doMyStartupStuff() {
         System.out.println(">> FirstPizzeriaService: inside of doMyStartupStuff()");
-        name="Viktor Vranar";
-        address="Jordanovac 115, 10 000 Zagreb";
+        name = "Viktor Vranar";
+        address = "Jordanovac 115, 10 000 Zagreb";
     }
 
     @Override

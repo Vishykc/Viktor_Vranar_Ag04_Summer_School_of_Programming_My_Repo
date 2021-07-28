@@ -11,7 +11,6 @@
     <!-- Define your Beans here -->
 
     <context:component-scan base-package="com.agency04.sbss.pizza"/>
-    <context:property-placeholder location="classpath:application.properties"/>
     
     
     <!--<bean id="myFirstPizzeria"

@@ -1,14 +1,21 @@
 package com.agency04.sbss.pizza.model;
 
 
+import org.springframework.stereotype.Component;
+
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
 import java.util.ArrayList;
 import java.util.Collection;
 
-public class DiavolaPizza implements  Pizza {
-    private final String name;
-    private final Collection<String> ingredients;
+@Component("myDiavolaPizza")
+public class DiavolaPizza implements Pizza {
+    private String name;
+    private Collection<String> ingredients;
 
-    public DiavolaPizza() {
+    @PostConstruct
+    public void doMyStartupStuff() {
+        System.out.println(">> DiavolaPizza: inside of doMyStartupStuff()");
         name = "Diavola";
         ingredients = new ArrayList<>();
         ingredients.add(PizzaIngredient.TOS.getLabel());
@@ -25,5 +32,10 @@ public class DiavolaPizza implements  Pizza {
     @Override
     public Collection<String> getIngredients() {
         return ingredients;
+    }
+
+    @PreDestroy
+    public void doMyCleanupStuff() {
+        System.out.println(">> DiavolaPizza: inside of doMyCleanupStuff()");
     }
 }

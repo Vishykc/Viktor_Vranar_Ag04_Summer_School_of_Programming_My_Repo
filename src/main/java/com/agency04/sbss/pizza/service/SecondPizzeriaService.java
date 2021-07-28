@@ -2,18 +2,26 @@ package com.agency04.sbss.pizza.service;
 
 import com.agency04.sbss.pizza.model.Pizza;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+
 @Component("mySecondPizzeria")
+@Scope("prototype")
 public class SecondPizzeriaService implements PizzeriaService{
-
-    @Value("${SecondPizzeriaService.name}")
     private String name;
-
-    @Value("${SecondPizzeriaService.address}")
     private String address;
 
     public SecondPizzeriaService(){ }
+
+    @PostConstruct
+    public void doMyStartupStuff() {
+        System.out.println(">> SecondPizzeriaService: inside of doMyStartupStuff");
+        name="Antea Tinodi";
+        address="Ul. Frana Galovica 13, 48 000 Koprivnica";
+    }
 
     @Override
     public String getName() {
@@ -33,7 +41,12 @@ public class SecondPizzeriaService implements PizzeriaService{
 
     @Override
     public void makePizza(Pizza thePizza) {
-        System.out.println("A delicious pizza has been made by SecondPizzeriaService!");
+        System.out.println("A delicious pizza has been made by SecondPizzeriaService!()");
+    }
+
+    @PreDestroy
+    public void doMyCleanupStuff() {
+        System.out.println(">> SecondPizzeriaService: inside of doMyCleanupStuff()");
     }
 }
 

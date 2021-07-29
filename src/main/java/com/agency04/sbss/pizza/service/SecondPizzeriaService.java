@@ -1,12 +1,9 @@
 package com.agency04.sbss.pizza.service;
 
 import com.agency04.sbss.pizza.model.Pizza;
-import org.springframework.stereotype.Component;
-
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 
-@Component("mySecondPizzeria")
 public class SecondPizzeriaService implements PizzeriaService{
     private String name;
     private String address;

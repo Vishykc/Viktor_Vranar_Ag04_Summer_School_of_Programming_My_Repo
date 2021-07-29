@@ -3,11 +3,11 @@ package com.agency04.sbss.pizza.service;
 import com.agency04.sbss.pizza.model.Pizza;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.util.stream.Collectors;
 
-@Component("myDelivery")
+@Service("myDelivery")
 public class PizzaDeliveryService {
 
     @Autowired
@@ -15,7 +15,6 @@ public class PizzaDeliveryService {
     private PizzeriaService firstPizzeriaService;
 
     @Autowired
-    @Qualifier("mySecondPizzeria")
     private PizzeriaService secondPizzeriaService;
 
     public PizzaDeliveryService(){ }

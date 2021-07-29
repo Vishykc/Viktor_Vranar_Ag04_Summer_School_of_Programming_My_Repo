@@ -1,7 +1,6 @@
 package com.agency04.sbss.pizza.model;
 
 import org.springframework.stereotype.Component;
-
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import java.util.ArrayList;

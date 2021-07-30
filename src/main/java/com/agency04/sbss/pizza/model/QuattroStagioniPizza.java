@@ -1,19 +1,19 @@
 package com.agency04.sbss.pizza.model;
 
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
-import javax.annotation.PostConstruct;
-import javax.annotation.PreDestroy;
+
 import java.util.ArrayList;
 import java.util.Collection;
 
 @Component("myQuattroStagioniPizza")
+@Scope("prototype")
 public class QuattroStagioniPizza implements Pizza {
-    private String name;
-    private Collection<String> ingredients;
+    private final String name;
+    private final Collection<String> ingredients;
 
-    @PostConstruct
-    public void doMyStartupStuff() {
-        System.out.println(">> QuattroStagioniPizza: inside of doMyStartupStuff()");
+    QuattroStagioniPizza() {
+        System.out.println(">> QuattroStagioniPizza: inside of QuattroStagioniPizza() constructor");
         name = "QuattroStagioni";
         ingredients = new ArrayList<>();
         ingredients.add(PizzaIngredient.TOS.getLabel());
@@ -32,10 +32,5 @@ public class QuattroStagioniPizza implements Pizza {
     @Override
     public Collection<String> getIngredients() {
         return ingredients;
-    }
-
-    @PreDestroy
-    public void doMyCleanupStuff() {
-        System.out.println(">> QuattroStagioniPizza: inside of doMyCleanupStuff()");
     }
 }

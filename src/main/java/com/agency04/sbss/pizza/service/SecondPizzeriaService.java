@@ -1,6 +1,8 @@
 package com.agency04.sbss.pizza.service;
 
 import com.agency04.sbss.pizza.model.Pizza;
+import org.springframework.beans.factory.annotation.Value;
+
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 
@@ -13,6 +15,7 @@ public class SecondPizzeriaService implements PizzeriaService{
     @PostConstruct
     public void doMyStartupStuff() {
         System.out.println(">> SecondPizzeriaService: inside of doMyStartupStuff");
+
         name = "Antea Tinodi";
         address = "Ul. Frana Galovica 13, 48 000 Koprivnica";
     }

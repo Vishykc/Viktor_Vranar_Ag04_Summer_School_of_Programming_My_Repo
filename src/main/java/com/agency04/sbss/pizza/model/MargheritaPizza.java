@@ -3,11 +3,12 @@ package com.agency04.sbss.pizza.model;
 import java.util.ArrayList;
 import java.util.Collection;
 
-public class MargheritaPizza implements  Pizza {
+public class MargheritaPizza implements Pizza {
     private final String name;
     private final Collection<String> ingredients;
 
-    public MargheritaPizza(){
+    public MargheritaPizza() {
+        System.out.println(">> MargeritaPizza: inside of MargheritaPizza() constructor");
         name = "Margerita";
         ingredients = new ArrayList<>();
         ingredients.add(PizzaIngredient.TOS.getLabel());
@@ -16,8 +17,12 @@ public class MargheritaPizza implements  Pizza {
     }
 
     @Override
-    public String getName() { return name; }
+    public String getName() {
+        return name;
+    }
 
     @Override
-    public Collection<String> getIngredients() { return ingredients; }
+    public Collection<String> getIngredients() {
+        return ingredients;
+    }
 }

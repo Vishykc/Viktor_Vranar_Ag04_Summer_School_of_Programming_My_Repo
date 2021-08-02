@@ -3,11 +3,12 @@ package com.agency04.sbss.pizza.model;
 import java.util.ArrayList;
 import java.util.Collection;
 
-public class QuattroStagioniPizza implements  Pizza {
+public class QuattroStagioniPizza implements Pizza {
     private final String name;
     private final Collection<String> ingredients;
 
     public QuattroStagioniPizza() {
+        System.out.println(">> QuattroStagioniPizza: inside of QuattroStagioniPizza() constructor");
         name = "QuattroStagioni";
         ingredients = new ArrayList<>();
         ingredients.add(PizzaIngredient.TOS.getLabel());

@@ -1,18 +1,13 @@
 package com.agency04.sbss.pizza.model;
 
-import org.springframework.context.annotation.Scope;
-import org.springframework.stereotype.Component;
-
 import java.util.ArrayList;
 import java.util.Collection;
 
-@Component("myFontanaPizza")
-@Scope("prototype")
 public class FontanaPizza implements Pizza {
     private final String name;
     private final Collection<String> ingredients;
 
-    FontanaPizza() {
+    public FontanaPizza() {
         System.out.println(">> FontanaPizza: inside of FontanaPizza() constructor");
         name = "Fontana";
         ingredients = new ArrayList<>();

@@ -1,5 +1,6 @@
 package com.agency04.sbss.pizza.service;
 
+import com.agency04.sbss.pizza.model.DiavolaPizza;
 import com.agency04.sbss.pizza.model.Pizza;
 import com.agency04.sbss.pizza.model.PizzaConfig;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -15,7 +16,7 @@ public class PizzaApp {
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(PizzaConfig.class);
 
         PizzaDeliveryService thePizzaDeliveryService = (PizzaDeliveryService) context.getBean("myDelivery");
-        Pizza pizza = context.getBean("myDiavolaPizza", Pizza.class);
+        Pizza pizza = new DiavolaPizza();
 
         thePizzaDeliveryService.orderPizza(pizza);
 

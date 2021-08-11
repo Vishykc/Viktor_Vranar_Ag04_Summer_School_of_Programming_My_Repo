@@ -13,7 +13,11 @@ public class PizzaApp {
     public static void main(String[] args) {
         SpringApplication.run(PizzaApp.class, args);
         // Add some pizza code
-        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(PizzaConfig.class);
+
+
+
+
+     /*   AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(PizzaConfig.class);
 
         PizzaDeliveryService thePizzaDeliveryService = (PizzaDeliveryService) context.getBean("myDelivery");
         Pizza pizza = new DiavolaPizza();
@@ -22,6 +26,6 @@ public class PizzaApp {
 
         System.out.println("The end of PizzaApp main program!\n");
 
-        context.close();
+        context.close();*/
     }
 }

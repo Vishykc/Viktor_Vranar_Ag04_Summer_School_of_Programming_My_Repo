@@ -1,13 +1,16 @@
 package com.agency04.sbss.pizza.service;
 
-import com.agency04.sbss.pizza.model.Pizza;
+import com.agency04.sbss.pizza.model.*;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
+import java.util.ArrayList;
+import java.util.Collection;
 
 public class SecondPizzeriaService implements PizzeriaService{
     private String name;
     private String address;
+    private Collection<Pizza> menu;
 
     public SecondPizzeriaService(){ }
 
@@ -17,6 +20,11 @@ public class SecondPizzeriaService implements PizzeriaService{
 
         name = "Antea Tinodi";
         address = "Ul. Frana Galovica 13, 48 000 Koprivnica";
+        menu = new ArrayList<>();
+        menu.add(new DiavolaPizza());
+        menu.add(new FontanaPizza());
+        menu.add(new MargheritaPizza());
+        menu.add(new QuattroStagioniPizza());
     }
 
     @Override
@@ -38,6 +46,15 @@ public class SecondPizzeriaService implements PizzeriaService{
     @Override
     public void makePizza(Pizza thePizza) {
         System.out.println("A delicious pizza has been made by SecondPizzeriaService!()");
+    }
+
+    @Override
+    public Collection<Pizza> getMenu() {
+        return menu;
+    }
+
+    public void setMenu(Collection<Pizza> menu) {
+        this.menu = menu;
     }
 
     @PreDestroy

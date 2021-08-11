@@ -6,6 +6,7 @@ import java.util.Collection;
 public class FontanaPizza implements Pizza {
     private final String name;
     private final Collection<String> ingredients;
+    private Collection<String> sizes;
 
     public FontanaPizza() {
         System.out.println(">> FontanaPizza: inside of FontanaPizza() constructor");
@@ -16,6 +17,11 @@ public class FontanaPizza implements Pizza {
         ingredients.add(PizzaIngredient.GOR.getLabel());
         ingredients.add(PizzaIngredient.RAD.getLabel());
         ingredients.add(PizzaIngredient.PAR.getLabel());
+
+        sizes = new ArrayList<>();
+        sizes.add("S");
+        sizes.add("L");
+        sizes.add("Jumbo");
     }
 
     @Override
@@ -26,5 +32,10 @@ public class FontanaPizza implements Pizza {
     @Override
     public Collection<String> getIngredients() {
         return ingredients;
+    }
+
+    @Override
+    public Collection<String> getSizes() {
+        return sizes;
     }
 }

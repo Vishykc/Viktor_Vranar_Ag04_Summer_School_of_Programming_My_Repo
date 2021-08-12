@@ -8,7 +8,7 @@ import java.util.Collection;
 
 @Component("myDeliveryForm")
 public class DeliveryOrderForm {
-    
+
     private Customer delCustomer;
     private Collection<PizzaSizeNumber> delPizzaOrderDetails;
 

@@ -18,10 +18,6 @@ public class DiavolaPizza implements Pizza {
         ingredients.add(PizzaIngredient.SPS.getLabel());
         ingredients.add(PizzaIngredient.CHI.getLabel());
 
-        sizes = new ArrayList<>();
-        sizes.add("S");
-        sizes.add("L");
-        sizes.add("Jumbo");
     }
 
     @Override
@@ -34,8 +30,4 @@ public class DiavolaPizza implements Pizza {
         return ingredients;
     }
 
-    @Override
-    public Collection<String> getSizes() {
-        return sizes;
-    }
 }

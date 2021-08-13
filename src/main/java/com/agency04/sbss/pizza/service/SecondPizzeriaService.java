@@ -57,6 +57,10 @@ public class SecondPizzeriaService implements PizzeriaService{
         this.menu = menu;
     }
 
+    public Pizza findPizzaByName(Collection<Pizza> pizzasList, String name) {
+        return pizzasList.stream().filter(pizza -> name.equals(pizza.getName())).findFirst().orElse(null);
+    }
+
     @PreDestroy
     public void doMyCleanupStuff() {
         System.out.println(">> SecondPizzeriaService: inside of doMyCleanupStuff()");

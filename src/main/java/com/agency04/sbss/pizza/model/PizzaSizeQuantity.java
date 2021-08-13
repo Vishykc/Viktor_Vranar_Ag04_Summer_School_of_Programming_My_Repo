@@ -4,13 +4,14 @@ import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 
-@Component("myPizzaSizeNumber")
-public class PizzaSizeNumber {
-    private Pizza pizza;
-    private String size;
-     private int number;
+@Component("myPizzaSizeQuantity")
+public class PizzaSizeQuantity {
 
-     public PizzaSizeNumber() {
+    private String pizza;
+    private String size;
+    private int quantity;
+
+     public PizzaSizeQuantity() {
 
      }
 
@@ -19,11 +20,11 @@ public class PizzaSizeNumber {
 
      }
 
-    public Pizza getPizza() {
+    public String getPizza() {
         return pizza;
     }
 
-    public void setPizza(Pizza pizza) {
+    public void setPizza(String pizza) {
         this.pizza = pizza;
     }
 
@@ -35,11 +36,11 @@ public class PizzaSizeNumber {
         this.size = size;
     }
 
-    public int getNumber() {
-        return number;
+    public int getQuantity() {
+        return quantity;
     }
 
-    public void setNumber(int number) {
-        this.number = number;
+    public void setQuantity(int number) {
+        this.quantity = number;
     }
 }

@@ -6,33 +6,32 @@ import javax.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.Collection;
 
-@Component("myDeliveryForm")
+@Component("myDeliveryOrderForm")
 public class DeliveryOrderForm {
 
-    private Customer delCustomer;
-    private Collection<PizzaSizeNumber> delPizzaOrderDetails;
+    private String delCustomer;
+    private Collection<PizzaSizeQuantity> delPizzaOrderDetails;
 
     public DeliveryOrderForm() { }
 
-    public Customer getDelCustomer() {
+    public String getDelCustomer() {
         return delCustomer;
     }
 
-    public void setDelCustomer(Customer delCustomer) {
+    public void setDelCustomer(String delCustomer) {
         this.delCustomer = delCustomer;
     }
 
-    public Collection<PizzaSizeNumber> getDelPizzaOrderDetails() {
+    public Collection<PizzaSizeQuantity> getDelPizzaOrderDetails() {
         return delPizzaOrderDetails;
     }
 
-    public void setDelPizzaOrderDetails(Collection<PizzaSizeNumber> delPizzaOrderDetails) {
+    public void setDelPizzaOrderDetails(Collection<PizzaSizeQuantity> delPizzaOrderDetails) {
         this.delPizzaOrderDetails = delPizzaOrderDetails;
     }
 
     @PostConstruct
     public void doMyStartupStuff() {
-        delCustomer = new Customer();
         delPizzaOrderDetails = new ArrayList<>();
 
     }

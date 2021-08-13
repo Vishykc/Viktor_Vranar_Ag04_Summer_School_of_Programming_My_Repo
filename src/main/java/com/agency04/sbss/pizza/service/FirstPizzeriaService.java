@@ -62,6 +62,10 @@ public class FirstPizzeriaService implements PizzeriaService {
         System.out.println("A delicious pizza has been made by FirstPizzeriaService!");
     }
 
+    public Pizza findPizzaByName(Collection<Pizza> pizzasList, String name) {
+        return pizzasList.stream().filter(pizza -> name.equals(pizza.getName())).findFirst().orElse(null);
+    }
+
     @PreDestroy
     public void doMyCleanupStuff() {
         System.out.println(">> FirstPizzeriaService: inside of doMyCleanupStuff()");

@@ -16,10 +16,6 @@ public class MargheritaPizza implements Pizza {
         ingredients.add(PizzaIngredient.MOZ.getLabel());
         ingredients.add(PizzaIngredient.ORE.getLabel());
 
-        sizes = new ArrayList<>();
-        sizes.add("S");
-        sizes.add("L");
-        sizes.add("Jumbo");
     }
 
     @Override
@@ -32,8 +28,4 @@ public class MargheritaPizza implements Pizza {
         return ingredients;
     }
 
-    @Override
-    public Collection<String> getSizes() {
-        return sizes;
-    }
 }

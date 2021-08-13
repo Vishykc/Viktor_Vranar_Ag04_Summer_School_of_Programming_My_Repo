@@ -18,10 +18,6 @@ public class FontanaPizza implements Pizza {
         ingredients.add(PizzaIngredient.RAD.getLabel());
         ingredients.add(PizzaIngredient.PAR.getLabel());
 
-        sizes = new ArrayList<>();
-        sizes.add("S");
-        sizes.add("L");
-        sizes.add("Jumbo");
     }
 
     @Override
@@ -34,8 +30,4 @@ public class FontanaPizza implements Pizza {
         return ingredients;
     }
 
-    @Override
-    public Collection<String> getSizes() {
-        return sizes;
-    }
 }

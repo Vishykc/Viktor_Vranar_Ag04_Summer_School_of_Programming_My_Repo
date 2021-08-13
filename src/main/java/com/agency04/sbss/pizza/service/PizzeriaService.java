@@ -9,4 +9,5 @@ public interface PizzeriaService {
     String getAddress();
     Collection<Pizza> getMenu();
     void makePizza(Pizza thePizza);
+    Pizza findPizzaByName(Collection<Pizza> pizzasList, String name);
 }

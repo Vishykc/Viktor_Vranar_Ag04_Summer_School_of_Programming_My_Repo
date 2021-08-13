@@ -5,5 +5,4 @@ import java.util.Collection;
 public interface Pizza {
     String getName();
     Collection<String> getIngredients();
-    Collection<String> getSizes();
 }

@@ -65,21 +65,18 @@ public class DeliveryRestController {
         }
 
 
-        thePizzaOrderDetailsQuantities = new ArrayList<>();
+        thePizzaOrderDetailsSizes = new ArrayList<>();
 
         for(int i = 0; i < thePizzaOrderDetails.size(); i++) {
-            thePizzaOrderDetailsQuantities.add(((ArrayList<PizzaSizeQuantity>) thePizzaOrderDetails).get(i).getQuantity());
+            thePizzaOrderDetailsSizes.add(((ArrayList<PizzaSizeQuantity>) thePizzaOrderDetails).get(i).getSize());
         }
 
         for(String size : thePizzaOrderDetailsSizes) {
-            if(size != "S" || size != "M" || size != "L") {
+            if(!(size.equals("S")) && !(size.equals("M")) && !(size.equals("L"))) {
                 throw new SizeNotFoundException("Size not found - " + size);
             }
         }
-
-
-
-
+        
         thePizzaDeliveryService.getCurrentOrders().add(deliveryOrderForm);
         System.out.println("A delivery form has been added to PizzaDeliveryService!");
         return deliveryOrderForm;

@@ -6,7 +6,6 @@ import java.util.Collection;
 public class QuattroStagioniPizza implements Pizza {
     private final String name;
     private final Collection<String> ingredients;
-    private Collection<String> sizes;
 
     public QuattroStagioniPizza() {
         System.out.println(">> QuattroStagioniPizza: inside of QuattroStagioniPizza() constructor");

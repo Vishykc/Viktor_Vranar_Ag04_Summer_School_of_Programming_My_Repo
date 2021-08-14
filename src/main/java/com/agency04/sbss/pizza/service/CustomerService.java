@@ -33,7 +33,31 @@ public class CustomerService {
     }
 
     public Customer findByUsername(Collection<Customer> customersList, String username) {
-        return customersList.stream().filter(customer -> username.equals(customer.getUsername())).findFirst().orElse(null);
+        Customer foundCustomer = new Customer();
+        foundCustomer = customersList.stream().filter(customer -> username.equals(customer.getUsername())).findFirst().orElse(null);
+
+        if(foundCustomer == null) throw new CustomerNotFoundException("Customer not found - " + username);
+
+        return  foundCustomer;
+    }
+
+    public Customer getCustomerByUsername(String userName) {
+        return findByUsername(getCustomersList(), userName);
+    }
+
+    public void addCustomer(Customer customer) {
+        getCustomersList().add(customer);
+    }
+
+    public void updateCustomer(Customer customer) {
+        getCustomerByUsername(customer.getUsername());
+        getCustomersList().removeIf(c -> c.getUsername().equals(customer.getUsername()));
+        addCustomer(customer);
+    }
+
+    public void deleteCustomerByUsername(String username) {
+        Customer tempCustomer = findByUsername(getCustomersList(), username);
+        getCustomersList().removeIf(c -> c.getUsername().equals(username));
     }
 
 }

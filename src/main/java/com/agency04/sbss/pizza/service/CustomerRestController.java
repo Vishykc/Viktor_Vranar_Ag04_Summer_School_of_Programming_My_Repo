@@ -2,11 +2,9 @@ package com.agency04.sbss.pizza.service;
 
 import com.agency04.sbss.pizza.model.Customer;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.stream.Collectors;
 
 
 @RestController
@@ -16,61 +14,47 @@ public class CustomerRestController {
     @Autowired
     CustomerService customerService;
 
-    @GetMapping("/{userName}")
-    public Customer getCustomer(@PathVariable String userName) {
+    @GetMapping("/{username}")
+    public Customer getCustomer(@PathVariable String username) {
 
-        System.out.println("A GET HTTP request was made: http://localhost:8080/api/customer/" + userName + "\n");
-        return customerService.findByUsername(customerService.getCustomersList(), userName);
+        System.out.println("A GET HTTP request was made: http://localhost:8080/api/customer/" + username + "\n");
+        return customerService.getCustomerByUsername(username);
 
     }
 
-    @PostMapping("")
-    public Customer setCustomer(@RequestBody Customer theCustomer) {
+    @PostMapping
+    public ResponseEntity<String> setCustomer(@RequestBody Customer customer) {
 
         System.out.println("A POST HTTP request was made: http://localhost:8080/api/customer and customer is added: " +
-                "\nusername: " + theCustomer.getUsername() +
-                "\nname: " + theCustomer.getName() +
-                "\naddress: " + theCustomer.getAddress() + "\n");
-        customerService.getCustomersList().add(theCustomer);
-        return theCustomer;
+                "\nusername: " + customer.getUsername() +
+                "\nname: " + customer.getName() +
+                "\naddress: " + customer.getAddress() + "\n");
+
+        customerService.addCustomer(customer);
+
+        return new ResponseEntity<>("A customer was successfully added!", HttpStatus.CREATED);
     }
 
-    @PutMapping("")
-    public Customer updateCustomer(@RequestBody Customer theCustomer) {
+    @PutMapping
+    public ResponseEntity<String> updateCustomer(@RequestBody Customer customer) {
 
-       /* Iterator itr = customerService.getCustomersList().iterator();
-
-        while(itr.hasNext()) {
-            Customer customer = (Customer) itr.next();
-            if (customer.getUsername() == theCustomer.getUsername()) {
-                customerService.getCustomersList().remove(customer); //Use itr.remove() method
-            }
-        }*/
-
-        customerService.getCustomersList().removeIf(customer -> customer.getUsername().equals(theCustomer.getUsername()));
-        customerService.getCustomersList().add(theCustomer);
+        customerService.updateCustomer(customer);
 
         System.out.println("A PUT HTTP request was made: http://localhost:8080/api/customer and customer is updated: " +
-                "\nusername: " + theCustomer.getUsername() +
-                "\nname: " + theCustomer.getName() +
-                "\naddress: " + theCustomer.getAddress() + "\n");
+                "\nusername: " + customer.getUsername() +
+                "\nname: " + customer.getName() +
+                "\naddress: " + customer.getAddress() + "\n");
 
-        return theCustomer;
-
+        return new ResponseEntity<>("A customer was successfully updated!", HttpStatus.OK);
     }
 
-    @DeleteMapping("/{userName}")
-    public Customer deleteCustomer(@PathVariable String userName) {
+    @DeleteMapping("/{username}")
+    public ResponseEntity<String> deleteCustomerByUsername(@PathVariable String username) {
 
-        System.out.println("A DELETE HTTP request was made: http://localhost:8080/api/customer/" + userName + "\n");
-        Customer tempCustomer = customerService.findByUsername(customerService.getCustomersList(), userName);;
-        customerService.getCustomersList().removeIf(customer -> customer.getUsername().equals(userName));
-        return tempCustomer;
+        System.out.println("A DELETE HTTP request was made: http://localhost:8080/api/customer/" + username + "\n");
 
+        customerService.deleteCustomerByUsername(username);
+
+        return new ResponseEntity<>("A customer was successfully deleted!", HttpStatus.OK);
     }
-
-
-
-
-
 }

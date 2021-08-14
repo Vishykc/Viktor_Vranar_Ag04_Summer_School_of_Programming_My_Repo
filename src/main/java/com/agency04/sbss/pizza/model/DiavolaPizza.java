@@ -6,7 +6,6 @@ import java.util.Collection;
 public class DiavolaPizza implements Pizza {
     private final String name;
     private final Collection<String> ingredients;
-    private Collection<String> sizes;
 
     public DiavolaPizza() {
         System.out.println(">> DiavolaPizza: inside of DiavolaPizza() constructor");

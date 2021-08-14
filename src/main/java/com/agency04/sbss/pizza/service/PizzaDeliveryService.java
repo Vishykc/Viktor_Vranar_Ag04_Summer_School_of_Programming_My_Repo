@@ -41,43 +41,17 @@ public class PizzaDeliveryService {
         this.currentOrders = currentOrders;
     }
 
-    /*public void orderPizza(Pizza thePizza) {
-        System.out.println("\nWe have received a pizza order!");
+    public Collection<Pizza> getMenuFromFirstPizzeria() {
+        return getFirstPizzeriaService().getMenu();
+    }
 
-        firstPizzeriaService.makePizza(thePizza);
-    }*/
+    public void addOrder(DeliveryOrderForm deliveryOrderForm) {
+        getCurrentOrders().add(deliveryOrderForm);
+        System.out.println("A delivery form has been added to PizzaDeliveryService!");
+    }
 
     @PostConstruct
     public void doMyStartupStuff() {
         currentOrders = new ArrayList<>();
     }
-
 }
-
-
-
-
-        /*System.out.println("Details of the order:\nname: "
-                + firstPizzeriaService.getName()
-                + "\naddress: "
-                + firstPizzeriaService.getAddress()
-                + "\npizza: "
-                + thePizza.getName() + " ("
-                + thePizza.getIngredients().stream()
-                .map(Object::toString)
-                .collect(Collectors.joining(", ")) + ")\n");
-
-        System.out.println("\nWe have received a pizza order!");
-
-        secondPizzeriaService.makePizza(thePizza);
-
-        System.out.println("Details of the order:\nname: "
-                + secondPizzeriaService.getName()
-                + "\naddress: "
-                + secondPizzeriaService.getAddress()
-                + "\npizza: "
-                + thePizza.getName() + " ("
-                + thePizza.getIngredients().stream()
-                .map(Object::toString)
-                .collect(Collectors.joining(", ")) + ")\n");
-    }*/

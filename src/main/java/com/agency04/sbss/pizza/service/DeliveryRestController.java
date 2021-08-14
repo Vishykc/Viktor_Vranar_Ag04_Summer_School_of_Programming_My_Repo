@@ -13,87 +13,72 @@ import java.util.Collection;
 @RestController
 @RequestMapping("/api/delivery")
 public class DeliveryRestController {
-    private String theCustomer;
-    private String thePizza;
-    private Collection<PizzaSizeQuantity> thePizzaOrderDetails;
-    private Collection<String> thePizzaOrderDetailsNames;
-    private Collection<String> thePizzaOrderDetailsSizes;
-    private Collection<Integer> thePizzaOrderDetailsQuantities;
 
     @Autowired
-    private PizzaDeliveryService thePizzaDeliveryService;
+    private PizzaDeliveryService pizzaDeliveryService;
 
     @Autowired
-    private CustomerService theCustomerService;
+    private CustomerService customerService;
 
     @PostMapping("/order")
-    public DeliveryOrderForm orderPizza(@RequestBody DeliveryOrderForm deliveryOrderForm) {
-        theCustomer = deliveryOrderForm.getDelCustomer();
+    public ResponseEntity<String> orderPizza(@RequestBody DeliveryOrderForm deliveryOrderForm) {
 
-        if(theCustomerService.findByUsername(theCustomerService.getCustomersList(), theCustomer) == null) {
+        //Checking if deliveryOrderForm is valid and throw errors if not
 
-            throw new CustomerNotFoundException("Customer not found - " + theCustomer);
-        }
-         thePizzaOrderDetails = new ArrayList<>();
-         thePizzaOrderDetails = deliveryOrderForm.getDelPizzaOrderDetails();
+        String customer = deliveryOrderForm.getDelCustomer();
+        customerService.getCustomerByUsername(customer);
 
-        thePizzaOrderDetailsNames = new ArrayList<>();
+        Collection<PizzaSizeQuantity> pizzaOrderDetails;
+        pizzaOrderDetails = deliveryOrderForm.getDelPizzaOrderDetails();
 
-         for(int i = 0; i < thePizzaOrderDetails.size(); i++) {
-             thePizzaOrderDetailsNames.add(((ArrayList<PizzaSizeQuantity>) thePizzaOrderDetails).get(i).getPizza());
+        Collection<String> pizzaOrderDetailsNames = new ArrayList<>();
+
+         for(int i = 0; i < pizzaOrderDetails.size(); i++) {
+             pizzaOrderDetailsNames.add(((ArrayList<PizzaSizeQuantity>) pizzaOrderDetails).get(i).getPizza());
          }
 
-         for(String name : thePizzaOrderDetailsNames) {
-             if(thePizzaDeliveryService
+         for(String name : pizzaOrderDetailsNames) {
+             if(pizzaDeliveryService
                      .getFirstPizzeriaService()
-                     .findPizzaByName(thePizzaDeliveryService.getFirstPizzeriaService().getMenu(), name) == null) {
+                     .findPizzaByName(pizzaDeliveryService.getFirstPizzeriaService().getMenu(), name) == null) {
 
                  throw new PizzaNotFoundException("Pizza not found - " + name);
              }
          }
 
-        thePizzaOrderDetailsQuantities = new ArrayList<>();
+        Collection<String> pizzaOrderDetailsSizes = new ArrayList<>();
 
-        for(int i = 0; i < thePizzaOrderDetails.size(); i++) {
-            thePizzaOrderDetailsQuantities.add(((ArrayList<PizzaSizeQuantity>) thePizzaOrderDetails).get(i).getQuantity());
+        for(int i = 0; i < pizzaOrderDetails.size(); i++) {
+            pizzaOrderDetailsSizes.add(((ArrayList<PizzaSizeQuantity>) pizzaOrderDetails).get(i).getSize());
         }
 
-        for(Integer quantity : thePizzaOrderDetailsQuantities) {
+        for(String size : pizzaOrderDetailsSizes) {
+            if (!(size.equals("S")) && !(size.equals("M")) && !(size.equals("L"))) {
+                throw new SizeNotFoundException("Size not found - " + size);
+            }
+        }
+
+        Collection<Integer> pizzaOrderDetailsQuantities = new ArrayList<>();
+
+        for(int i = 0; i < pizzaOrderDetails.size(); i++) {
+            pizzaOrderDetailsQuantities.add(((ArrayList<PizzaSizeQuantity>) pizzaOrderDetails).get(i).getQuantity());
+        }
+
+        for(Integer quantity : pizzaOrderDetailsQuantities) {
             if(quantity <= 0) {
                 throw new QuantityNotValidException("Quantity is negative or zero - " + quantity);
             }
         }
 
 
-        thePizzaOrderDetailsSizes = new ArrayList<>();
+        pizzaDeliveryService.addOrder(deliveryOrderForm);
 
-        for(int i = 0; i < thePizzaOrderDetails.size(); i++) {
-            thePizzaOrderDetailsSizes.add(((ArrayList<PizzaSizeQuantity>) thePizzaOrderDetails).get(i).getSize());
-        }
-
-        for(String size : thePizzaOrderDetailsSizes) {
-            if(!(size.equals("S")) && !(size.equals("M")) && !(size.equals("L"))) {
-                throw new SizeNotFoundException("Size not found - " + size);
-            }
-        }
-        
-        thePizzaDeliveryService.getCurrentOrders().add(deliveryOrderForm);
-        System.out.println("A delivery form has been added to PizzaDeliveryService!");
-        return deliveryOrderForm;
+        return new ResponseEntity<>("A delivery order has successfully been posted!", HttpStatus.CREATED);
     }
+
 
     @GetMapping("/list")
     public Collection<DeliveryOrderForm> getCurrentOrders() {
-        return thePizzaDeliveryService.getCurrentOrders();
+        return pizzaDeliveryService.getCurrentOrders();
     }
-
-
-
-
-
-
-
-
-
-
 }

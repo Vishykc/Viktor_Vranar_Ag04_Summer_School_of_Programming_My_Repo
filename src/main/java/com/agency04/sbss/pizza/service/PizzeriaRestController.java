@@ -15,7 +15,7 @@ public class PizzeriaRestController {
     @Autowired
     PizzaDeliveryService pizzaDeliveryService;
 
-    @GetMapping()
+    @GetMapping
     public PizzeriaService getPizzeria() {
 
         System.out.println("A GET HTTP request was made: http://localhost:8080/api/pizzeria" + "\n");
@@ -26,8 +26,6 @@ public class PizzeriaRestController {
     public Collection<Pizza> getMenu() {
 
         System.out.println("A GET HTTP request was made: http://localhost:8080/api/pizzeria/menu" + "\n");
-        return pizzaDeliveryService.getFirstPizzeriaService().getMenu();
+        return pizzaDeliveryService.getMenuFromFirstPizzeria();
     }
-
-
 }

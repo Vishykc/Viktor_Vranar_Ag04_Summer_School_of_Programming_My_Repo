@@ -11,7 +11,13 @@ public class PizzaSizeQuantity {
     private String size;
     private int quantity;
 
-     public PizzaSizeQuantity() {
+    public PizzaSizeQuantity(String pizza, String size, int quantity) {
+        this.pizza = pizza;
+        this.size = size;
+        this.quantity = quantity;
+    }
+
+    public PizzaSizeQuantity() {
 
      }
 

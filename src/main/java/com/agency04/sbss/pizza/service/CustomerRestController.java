@@ -2,6 +2,7 @@ package com.agency04.sbss.pizza.service;
 
 import com.agency04.sbss.pizza.model.Customer;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.convert.ConversionService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,6 +15,9 @@ public class CustomerRestController {
     @Autowired
     CustomerService customerService;
 
+    @Autowired
+    ConversionService conversionService;
+
     @GetMapping("/{username}")
     public Customer getCustomer(@PathVariable String username) {
 
@@ -23,7 +27,9 @@ public class CustomerRestController {
     }
 
     @PostMapping
-    public ResponseEntity<String> setCustomer(@RequestBody Customer customer) {
+    public ResponseEntity<String> setCustomer(@RequestBody String customerString) {
+
+        Customer customer = conversionService.convert(customerString, Customer.class);
 
         System.out.println("A POST HTTP request was made: http://localhost:8080/api/customer and customer is added: " +
                 "\nusername: " + customer.getUsername() +
@@ -36,7 +42,9 @@ public class CustomerRestController {
     }
 
     @PutMapping
-    public ResponseEntity<String> updateCustomer(@RequestBody Customer customer) {
+    public ResponseEntity<String> updateCustomer(@RequestBody String customerString) {
+
+        Customer customer = conversionService.convert(customerString, Customer.class);
 
         customerService.updateCustomer(customer);
 

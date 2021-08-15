@@ -1,6 +1,7 @@
 package com.agency04.sbss.pizza.service;
 
 public class PizzaNotFoundException extends RuntimeException {
+
     public PizzaNotFoundException(String message) {
         super(message);
     }

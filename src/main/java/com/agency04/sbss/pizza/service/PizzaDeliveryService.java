@@ -1,6 +1,6 @@
 package com.agency04.sbss.pizza.service;
 
-import com.agency04.sbss.pizza.model.DeliveryOrderForm;
+import com.agency04.sbss.pizza.model.DeliveryOrder;
 import com.agency04.sbss.pizza.model.Pizza;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 import javax.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.stream.Collectors;
 
 @Service("myDelivery")
 public class PizzaDeliveryService {
@@ -21,7 +20,7 @@ public class PizzaDeliveryService {
     @Autowired
     private PizzeriaService secondPizzeriaService;
 
-    private Collection<DeliveryOrderForm> currentOrders;
+    private Collection<DeliveryOrder> currentOrders;
 
     public PizzaDeliveryService(){ }
 
@@ -33,11 +32,11 @@ public class PizzaDeliveryService {
         return secondPizzeriaService;
     }
 
-    public Collection<DeliveryOrderForm> getCurrentOrders() {
+    public Collection<DeliveryOrder> getCurrentOrders() {
         return currentOrders;
     }
 
-    public void setCurrentOrders(Collection<DeliveryOrderForm> currentOrders) {
+    public void setCurrentOrders(Collection<DeliveryOrder> currentOrders) {
         this.currentOrders = currentOrders;
     }
 
@@ -45,8 +44,8 @@ public class PizzaDeliveryService {
         return getFirstPizzeriaService().getMenu();
     }
 
-    public void addOrder(DeliveryOrderForm deliveryOrderForm) {
-        getCurrentOrders().add(deliveryOrderForm);
+    public void addOrder(DeliveryOrder deliveryOrder) {
+        getCurrentOrders().add(deliveryOrder);
         System.out.println("A delivery form has been added to PizzaDeliveryService!");
     }
 

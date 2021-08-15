@@ -38,4 +38,10 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(new DeliveryErrorResponse(HttpStatus.BAD_REQUEST.value(), exc.getMessage(), System.currentTimeMillis()), HttpStatus.BAD_REQUEST);
     }
 
+    @ExceptionHandler
+    public ResponseEntity<DeliveryErrorResponse> handleException(NumberOfArgumentsInvalidException exc) {
+
+        return new ResponseEntity<>(new DeliveryErrorResponse(HttpStatus.BAD_REQUEST.value(), exc.getMessage(), System.currentTimeMillis()), HttpStatus.BAD_REQUEST);
+    }
+
 }

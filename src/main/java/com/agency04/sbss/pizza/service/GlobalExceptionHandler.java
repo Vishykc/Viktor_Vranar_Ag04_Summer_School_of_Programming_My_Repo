@@ -2,46 +2,45 @@ package com.agency04.sbss.pizza.service;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.RestControllerAdvice;
 
-@ControllerAdvice
+@RestControllerAdvice
 public class GlobalExceptionHandler {
 
     @ExceptionHandler
-    public ResponseEntity<DeliveryErrorResponse> handleException(CustomerNotFoundException exc) {
+    public ResponseEntity<ErrorResponse> handleException(CustomerNotFoundException exc) {
 
-        return new ResponseEntity<>(new DeliveryErrorResponse(HttpStatus.NOT_FOUND.value(), exc.getMessage(), System.currentTimeMillis()), HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>(new ErrorResponse(HttpStatus.NOT_FOUND.value(), exc.getMessage(), System.currentTimeMillis()), HttpStatus.NOT_FOUND);
     }
 
     @ExceptionHandler
-    public ResponseEntity<DeliveryErrorResponse> handleException(PizzaNotFoundException exc) {
+    public ResponseEntity<ErrorResponse> handleException(PizzaNotFoundException exc) {
 
-        return new ResponseEntity<>(new DeliveryErrorResponse(HttpStatus.NOT_FOUND.value(), exc.getMessage(), System.currentTimeMillis()), HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>(new ErrorResponse(HttpStatus.NOT_FOUND.value(), exc.getMessage(), System.currentTimeMillis()), HttpStatus.NOT_FOUND);
     }
 
     @ExceptionHandler
-    public ResponseEntity<DeliveryErrorResponse> handleException(SizeNotFoundException exc) {
+    public ResponseEntity<ErrorResponse> handleException(SizeNotFoundException exc) {
 
-        return new ResponseEntity<>(new DeliveryErrorResponse(HttpStatus.NOT_FOUND.value(), exc.getMessage(), System.currentTimeMillis()), HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>(new ErrorResponse(HttpStatus.NOT_FOUND.value(), exc.getMessage(), System.currentTimeMillis()), HttpStatus.NOT_FOUND);
     }
 
     @ExceptionHandler
-    public ResponseEntity<DeliveryErrorResponse> handleException(QuantityNotValidException exc) {
+    public ResponseEntity<ErrorResponse> handleException(QuantityNotValidException exc) {
 
-        return new ResponseEntity<>(new DeliveryErrorResponse(HttpStatus.BAD_REQUEST.value(), exc.getMessage(), System.currentTimeMillis()), HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(new ErrorResponse(HttpStatus.BAD_REQUEST.value(), exc.getMessage(), System.currentTimeMillis()), HttpStatus.BAD_REQUEST);
     }
 
     @ExceptionHandler
-    public ResponseEntity<DeliveryErrorResponse> handleException(Exception exc) {
+    public ResponseEntity<ErrorResponse> handleException(Exception exc) {
 
-        return new ResponseEntity<>(new DeliveryErrorResponse(HttpStatus.BAD_REQUEST.value(), exc.getMessage(), System.currentTimeMillis()), HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(new ErrorResponse(HttpStatus.BAD_REQUEST.value(), exc.getMessage(), System.currentTimeMillis()), HttpStatus.BAD_REQUEST);
     }
 
     @ExceptionHandler
-    public ResponseEntity<DeliveryErrorResponse> handleException(NumberOfArgumentsInvalidException exc) {
+    public ResponseEntity<ErrorResponse> handleException(NumberOfArgumentsInvalidException exc) {
 
-        return new ResponseEntity<>(new DeliveryErrorResponse(HttpStatus.BAD_REQUEST.value(), exc.getMessage(), System.currentTimeMillis()), HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(new ErrorResponse(HttpStatus.BAD_REQUEST.value(), exc.getMessage(), System.currentTimeMillis()), HttpStatus.BAD_REQUEST);
     }
-
 }

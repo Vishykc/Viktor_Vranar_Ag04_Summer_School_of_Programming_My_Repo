@@ -16,7 +16,6 @@ public class DiavolaPizza implements Pizza {
         ingredients.add(PizzaIngredient.MOZ.getLabel());
         ingredients.add(PizzaIngredient.SPS.getLabel());
         ingredients.add(PizzaIngredient.CHI.getLabel());
-
     }
 
     @Override
@@ -28,5 +27,4 @@ public class DiavolaPizza implements Pizza {
     public Collection<String> getIngredients() {
         return ingredients;
     }
-
 }

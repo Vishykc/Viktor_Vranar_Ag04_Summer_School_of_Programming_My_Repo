@@ -16,7 +16,6 @@ public class FontanaPizza implements Pizza {
         ingredients.add(PizzaIngredient.GOR.getLabel());
         ingredients.add(PizzaIngredient.RAD.getLabel());
         ingredients.add(PizzaIngredient.PAR.getLabel());
-
     }
 
     @Override
@@ -28,5 +27,4 @@ public class FontanaPizza implements Pizza {
     public Collection<String> getIngredients() {
         return ingredients;
     }
-
 }

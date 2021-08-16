@@ -18,51 +18,47 @@ public class CustomerRestController {
     @Autowired
     ConversionService conversionService;
 
-    @GetMapping("/{username}")
-    public Customer getCustomer(@PathVariable String username) {
+    @GetMapping("/{userName}")
+    public Customer getCustomer(@PathVariable String userName) {
 
-        System.out.println("A GET HTTP request was made: http://localhost:8080/api/customer/" + username + "\n");
-        return customerService.getCustomerByUsername(username);
+        System.out.println(">> A GET HTTP request was made: /api/customer/" + userName);
+        return customerService.findByUsername(customerService.getCustomersList(), userName);
 
     }
 
     @PostMapping
-    public ResponseEntity<String> setCustomer(@RequestBody String customerString) {
+    public ResponseEntity<String> setCustomer(@RequestBody Customer customer) {
 
-        Customer customer = conversionService.convert(customerString, Customer.class);
-
-        System.out.println("A POST HTTP request was made: http://localhost:8080/api/customer and customer is added: " +
+        System.out.println(">> A POST HTTP request was made: /api/customer and customer is added: " +
                 "\nusername: " + customer.getUsername() +
                 "\nname: " + customer.getName() +
-                "\naddress: " + customer.getAddress() + "\n");
+                "\naddress: " + customer.getAddress());
 
         customerService.addCustomer(customer);
 
-        return new ResponseEntity<>("A customer was successfully added!", HttpStatus.CREATED);
+        return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
     @PutMapping
-    public ResponseEntity<String> updateCustomer(@RequestBody String customerString) {
-
-        Customer customer = conversionService.convert(customerString, Customer.class);
+    public ResponseEntity<Customer> updateCustomer(@RequestBody Customer customer) {
 
         customerService.updateCustomer(customer);
 
-        System.out.println("A PUT HTTP request was made: http://localhost:8080/api/customer and customer is updated: " +
+        System.out.println(">> A PUT HTTP request was made: /api/customer and customer is updated: " +
                 "\nusername: " + customer.getUsername() +
                 "\nname: " + customer.getName() +
-                "\naddress: " + customer.getAddress() + "\n");
+                "\naddress: " + customer.getAddress());
 
-        return new ResponseEntity<>("A customer was successfully updated!", HttpStatus.OK);
+        return new ResponseEntity<>(customer, HttpStatus.OK);
     }
 
     @DeleteMapping("/{username}")
     public ResponseEntity<String> deleteCustomerByUsername(@PathVariable String username) {
 
-        System.out.println("A DELETE HTTP request was made: http://localhost:8080/api/customer/" + username + "\n");
+        System.out.println(">> A DELETE HTTP request was made: /api/customer/" + username);
 
         customerService.deleteCustomerByUsername(username);
 
-        return new ResponseEntity<>("A customer was successfully deleted!", HttpStatus.OK);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 }

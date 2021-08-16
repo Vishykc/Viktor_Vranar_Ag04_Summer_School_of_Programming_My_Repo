@@ -10,7 +10,7 @@ public class PizzaApp {
         SpringApplication.run(PizzaApp.class, args);
         // Add some pizza code
 
-        
+
 
     }
 }

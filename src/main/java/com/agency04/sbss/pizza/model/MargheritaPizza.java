@@ -14,7 +14,6 @@ public class MargheritaPizza implements Pizza {
         ingredients.add(PizzaIngredient.TOS.getLabel());
         ingredients.add(PizzaIngredient.MOZ.getLabel());
         ingredients.add(PizzaIngredient.ORE.getLabel());
-
     }
 
     @Override
@@ -26,5 +25,4 @@ public class MargheritaPizza implements Pizza {
     public Collection<String> getIngredients() {
         return ingredients;
     }
-
 }

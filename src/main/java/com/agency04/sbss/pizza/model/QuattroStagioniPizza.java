@@ -17,7 +17,6 @@ public class QuattroStagioniPizza implements Pizza {
         ingredients.add(PizzaIngredient.ART.getLabel());
         ingredients.add(PizzaIngredient.OLI.getLabel());
         ingredients.add(PizzaIngredient.ORE.getLabel());
-
     }
 
     @Override
@@ -29,5 +28,4 @@ public class QuattroStagioniPizza implements Pizza {
     public Collection<String> getIngredients() {
         return ingredients;
     }
-
 }

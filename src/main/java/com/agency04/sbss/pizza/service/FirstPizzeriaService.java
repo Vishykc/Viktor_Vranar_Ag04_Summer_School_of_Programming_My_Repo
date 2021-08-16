@@ -13,8 +13,7 @@ public class FirstPizzeriaService implements PizzeriaService {
     private String address;
     private Collection<Pizza> menu;
 
-    public FirstPizzeriaService() {
-    }
+    public FirstPizzeriaService() {}
 
     @PostConstruct
     public void doMyStartupStuff() {

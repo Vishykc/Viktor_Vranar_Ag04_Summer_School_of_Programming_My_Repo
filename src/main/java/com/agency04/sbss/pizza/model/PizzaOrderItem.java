@@ -4,22 +4,19 @@ import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 
-@Component("myPizzaSizeQuantity")
-public class PizzaSizeQuantity {
+public class PizzaOrderItem {
 
     private String pizza;
     private String size;
     private int quantity;
 
-    public PizzaSizeQuantity(String pizza, String size, int quantity) {
+    public PizzaOrderItem(String pizza, String size, int quantity) {
         this.pizza = pizza;
         this.size = size;
         this.quantity = quantity;
     }
 
-    public PizzaSizeQuantity() {
-
-     }
+    public PizzaOrderItem() {}
 
      @PostConstruct
      public void doMyStartupStuff() {
@@ -29,7 +26,6 @@ public class PizzaSizeQuantity {
     public String getPizza() {
         return pizza;
     }
-
     public void setPizza(String pizza) {
         this.pizza = pizza;
     }
@@ -37,7 +33,6 @@ public class PizzaSizeQuantity {
     public String getSize() {
         return size;
     }
-
     public void setSize(String size) {
         this.size = size;
     }
@@ -45,7 +40,6 @@ public class PizzaSizeQuantity {
     public int getQuantity() {
         return quantity;
     }
-
     public void setQuantity(int number) {
         this.quantity = number;
     }

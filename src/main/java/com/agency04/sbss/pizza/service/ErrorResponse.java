@@ -1,12 +1,12 @@
 package com.agency04.sbss.pizza.service;
 
-public class DeliveryErrorResponse {
+public class ErrorResponse {
     private int status;
     private String message;
     private long timeStamp;
 
-    public DeliveryErrorResponse() {}
-    public DeliveryErrorResponse(int status, String message, long timeStamp) {
+    public ErrorResponse() {}
+    public ErrorResponse(int status, String message, long timeStamp) {
         this.status = status;
         this.message = message;
         this.timeStamp = timeStamp;
@@ -35,5 +35,4 @@ public class DeliveryErrorResponse {
     public void setTimeStamp(long timeStamp) {
         this.timeStamp = timeStamp;
     }
-
 }

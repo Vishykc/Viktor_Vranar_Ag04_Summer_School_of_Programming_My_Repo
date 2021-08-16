@@ -18,14 +18,14 @@ public class PizzeriaRestController {
     @GetMapping
     public PizzeriaService getPizzeria() {
 
-        System.out.println("A GET HTTP request was made: http://localhost:8080/api/pizzeria" + "\n");
+        System.out.println(">> A GET HTTP request was made: /api/pizzeria");
         return pizzaDeliveryService.getFirstPizzeriaService();
     }
 
     @GetMapping("/menu")
     public Collection<Pizza> getMenu() {
 
-        System.out.println("A GET HTTP request was made: http://localhost:8080/api/pizzeria/menu" + "\n");
+        System.out.println(">> A GET HTTP request was made: /api/pizzeria/menu");
         return pizzaDeliveryService.getMenuFromFirstPizzeria();
     }
 }

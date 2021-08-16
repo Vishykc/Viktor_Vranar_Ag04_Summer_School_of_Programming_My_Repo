@@ -1,13 +1,19 @@
 package com.agency04.sbss.pizza.service;
 
+import com.agency04.sbss.pizza.model.DeliveryOrder;
+import com.agency04.sbss.pizza.model.DeliveryOrderForm;
 import com.agency04.sbss.pizza.model.Pizza;
+import com.agency04.sbss.pizza.model.PizzaOrderItem;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.core.convert.ConversionService;
 import org.springframework.stereotype.Service;
 
-import java.util.stream.Collectors;
+import javax.annotation.PostConstruct;
+import java.util.ArrayList;
+import java.util.Collection;
 
-@Service("myDelivery")
+@Service
 public class PizzaDeliveryService {
 
     @Autowired
@@ -17,35 +23,77 @@ public class PizzaDeliveryService {
     @Autowired
     private PizzeriaService secondPizzeriaService;
 
+    @Autowired
+    private CustomerService customerService;
+
+    @Autowired
+    private ConversionService conversionService;
+
+    private Collection<DeliveryOrder> currentOrders;
+
     public PizzaDeliveryService(){ }
 
-    public void orderPizza(Pizza thePizza) {
-        System.out.println("\nWe have received a pizza order!");
+    public PizzeriaService getFirstPizzeriaService() {
+        return firstPizzeriaService;
+    }
 
-        firstPizzeriaService.makePizza(thePizza);
+    public PizzeriaService getSecondPizzeriaService() {
+        return secondPizzeriaService;
+    }
 
-        System.out.println("Details of the order:\nname: "
-                + firstPizzeriaService.getName()
-                + "\naddress: "
-                + firstPizzeriaService.getAddress()
-                + "\npizza: "
-                + thePizza.getName() + " ("
-                + thePizza.getIngredients().stream()
-                .map(Object::toString)
-                .collect(Collectors.joining(", ")) + ")\n");
+    public Collection<DeliveryOrder> getCurrentOrders() {
+        return currentOrders;
+    }
 
-        System.out.println("\nWe have received a pizza order!");
+    public void setCurrentOrders(Collection<DeliveryOrder> currentOrders) {
+        this.currentOrders = currentOrders;
+    }
 
-        secondPizzeriaService.makePizza(thePizza);
+    public Collection<Pizza> getMenuFromFirstPizzeria() {
+        return getFirstPizzeriaService().getMenu();
+    }
 
-        System.out.println("Details of the order:\nname: "
-                + secondPizzeriaService.getName()
-                + "\naddress: "
-                + secondPizzeriaService.getAddress()
-                + "\npizza: "
-                + thePizza.getName() + " ("
-                + thePizza.getIngredients().stream()
-                .map(Object::toString)
-                .collect(Collectors.joining(", ")) + ")\n");
+    public void addOrder(DeliveryOrder deliveryOrder) {
+        getCurrentOrders().add(deliveryOrder);
+        System.out.println("A delivery order has been added to PizzaDeliveryService!\n");
+    }
+
+    public void validateForm(DeliveryOrderForm deliveryOrderForm) {
+
+        // Validate if customer is valid
+        String tempCustomerUsername = deliveryOrderForm.getCustomerUsername();
+        if(customerService.findByUsername(customerService.getCustomersList(), tempCustomerUsername) == null) {
+            throw new CustomerNotFoundException("Customer not found - " + tempCustomerUsername);
+        }
+
+        // Validate the pizza order
+        int sizeOfOrderDetails = deliveryOrderForm.getOrderDetails().size();
+        ArrayList<PizzaOrderItem> orderDetails = (ArrayList<PizzaOrderItem>) deliveryOrderForm.getOrderDetails();
+
+        for(int i = 0; i < sizeOfOrderDetails; i++) {
+
+            // Validate pizza names from the menu
+            String tempPizza = orderDetails.get(i).getPizza();
+           if(firstPizzeriaService.findPizzaByName(firstPizzeriaService.getMenu(), tempPizza) == null) {
+               throw new PizzaNotFoundException("Error! Pizza not found on the menu - " + tempPizza);
+           }
+
+           // Validate pizza sizes
+            String tempSize = orderDetails.get(i).getSize();
+            if (!(tempSize.equals("S")) && !(tempSize.equals("M")) && !(tempSize.equals("L"))) {
+                throw new SizeNotFoundException("Error! Size not found - " + tempSize);
+            }
+
+            // Validate pizza quantity
+            int tempQuantity = conversionService.convert(orderDetails.get(i).getQuantity(), Integer.class);
+            if (tempQuantity <= 0) {
+                throw new QuantityNotValidException("Error! Quantity is negative or zero - " + tempQuantity);
+            }
+        }
+    }
+
+    @PostConstruct
+    public void doMyStartupStuff() {
+        currentOrders = new ArrayList<>();
     }
 }

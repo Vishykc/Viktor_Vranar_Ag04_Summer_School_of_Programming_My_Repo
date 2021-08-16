@@ -9,7 +9,7 @@ public class MargheritaPizza implements Pizza {
 
     public MargheritaPizza() {
         System.out.println(">> MargeritaPizza: inside of MargheritaPizza() constructor");
-        name = "Margerita";
+        name = "Margherita";
         ingredients = new ArrayList<>();
         ingredients.add(PizzaIngredient.TOS.getLabel());
         ingredients.add(PizzaIngredient.MOZ.getLabel());

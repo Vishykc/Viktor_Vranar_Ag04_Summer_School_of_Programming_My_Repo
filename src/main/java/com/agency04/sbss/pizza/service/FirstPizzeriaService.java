@@ -1,23 +1,31 @@
 package com.agency04.sbss.pizza.service;
 
-import com.agency04.sbss.pizza.model.Pizza;
+import com.agency04.sbss.pizza.model.*;
 import org.springframework.stereotype.Service;
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
+import java.util.ArrayList;
+import java.util.Collection;
 
 @Service("myFirstPizzeria")
 public class FirstPizzeriaService implements PizzeriaService {
     private String name;
     private String address;
+    private Collection<Pizza> menu;
 
-    public FirstPizzeriaService() {
-    }
+    public FirstPizzeriaService() {}
 
     @PostConstruct
     public void doMyStartupStuff() {
         System.out.println(">> FirstPizzeriaService: inside of doMyStartupStuff()");
         name = "Viktor Vranar";
         address = "Jordanovac 115, 10 000 Zagreb";
+
+        menu = new ArrayList<>();
+        menu.add(new DiavolaPizza());
+        menu.add(new FontanaPizza());
+        menu.add(new MargheritaPizza());
+        menu.add(new QuattroStagioniPizza());
     }
 
     @Override
@@ -39,8 +47,22 @@ public class FirstPizzeriaService implements PizzeriaService {
     }
 
     @Override
+    public Collection<Pizza> getMenu() {
+        return menu;
+    }
+
+    public void setMenu(Collection<Pizza> menu) {
+        this.menu = menu;
+    }
+
+
+    @Override
     public void makePizza(Pizza thePizza) {
         System.out.println("A delicious pizza has been made by FirstPizzeriaService!");
+    }
+
+    public Pizza findPizzaByName(Collection<Pizza> pizzasList, String name) {
+        return pizzasList.stream().filter(pizza -> name.equals(pizza.getName())).findFirst().orElse(null);
     }
 
     @PreDestroy

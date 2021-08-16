@@ -10,6 +10,7 @@ public class DiavolaPizza implements Pizza {
     public DiavolaPizza() {
         System.out.println(">> DiavolaPizza: inside of DiavolaPizza() constructor");
         name = "Diavola";
+
         ingredients = new ArrayList<>();
         ingredients.add(PizzaIngredient.TOS.getLabel());
         ingredients.add(PizzaIngredient.MOZ.getLabel());

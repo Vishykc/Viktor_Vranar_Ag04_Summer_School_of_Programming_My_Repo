@@ -58,7 +58,7 @@ public class CustomerRestController {
 
 
         Customer customer = customerForm.getCustomer();
-        customer.setCustomerDetails(customerDetails);
+        customer.setCustomerDetails(customerForm.getCustomerDetails());
         customerRepository.save(customer);
 
         return new ResponseEntity<>(customer, HttpStatus.CREATED);

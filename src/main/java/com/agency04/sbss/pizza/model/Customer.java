@@ -8,7 +8,7 @@ public class Customer {
 
     @Id
     @GeneratedValue
-    private long id;
+    private Long id;
 
     @Column
     private String username;
@@ -17,12 +17,8 @@ public class Customer {
     @JoinColumn(name = "CustomerDetails_id", referencedColumnName = "id")
     private CustomerDetails customerDetails;
 
-    public long getId() {
+    public Long getId() {
         return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
     }
 
     public CustomerDetails getCustomerDetails() {

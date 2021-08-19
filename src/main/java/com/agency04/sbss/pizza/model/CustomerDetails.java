@@ -8,7 +8,7 @@ public class CustomerDetails {
 
     @Id
     @GeneratedValue
-    private long id;
+    private Long id;
 
     @Column
     private String firstName;
@@ -22,11 +22,19 @@ public class CustomerDetails {
     @OneToOne(mappedBy = "customerDetails")
     private Customer customer;
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public CustomerDetails() {}
+
+    public CustomerDetails(String firstName, String lastName, String phone) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.phone = phone;
+    }
+
+    public void setId(Long id) {
         this.id = id;
     }
 

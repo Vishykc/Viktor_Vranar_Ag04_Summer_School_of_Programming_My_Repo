@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Primary;
 //import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 
-@Configuration
+/*@Configuration
 @ComponentScan("com.agency04.sbss.pizza")
 public class PizzaConfig {
 
@@ -19,4 +19,4 @@ public class PizzaConfig {
 
         return new SecondPizzeriaService();
     }
-}
+}*/

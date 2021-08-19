@@ -8,6 +8,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 //import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
+
 @Configuration
 @ComponentScan("com.agency04.sbss.pizza")
 public class PizzaConfig {

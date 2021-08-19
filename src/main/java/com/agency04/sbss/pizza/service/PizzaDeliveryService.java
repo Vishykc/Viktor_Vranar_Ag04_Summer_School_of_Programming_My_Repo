@@ -1,8 +1,12 @@
 package com.agency04.sbss.pizza.service;
 
+import com.agency04.sbss.pizza.exception.CustomerNotFoundException;
+import com.agency04.sbss.pizza.exception.PizzaNotFoundException;
+import com.agency04.sbss.pizza.exception.QuantityNotValidException;
+import com.agency04.sbss.pizza.exception.SizeNotFoundException;
 import com.agency04.sbss.pizza.model.DeliveryOrder;
 import com.agency04.sbss.pizza.model.DeliveryOrderForm;
-import com.agency04.sbss.pizza.model.Pizza;
+import com.agency04.sbss.pizza.model.PizzaInt;
 import com.agency04.sbss.pizza.model.PizzaOrderItem;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -49,7 +53,7 @@ public class PizzaDeliveryService {
         this.currentOrders = currentOrders;
     }
 
-    public Collection<Pizza> getMenuFromFirstPizzeria() {
+    public Collection<PizzaInt> getMenuFromFirstPizzeria() {
         return getFirstPizzeriaService().getMenu();
     }
 

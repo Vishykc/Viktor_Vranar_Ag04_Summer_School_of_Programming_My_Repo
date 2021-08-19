@@ -1,6 +1,6 @@
 package com.agency04.sbss.pizza.model;
 
-public enum PizzaIngredient {
+public enum Ingredient {
     ART("artichokes"),
     CHI("chilly pepper"),
     GOR("gorgonzola"),
@@ -19,7 +19,7 @@ public enum PizzaIngredient {
         return label;
     }
 
-    PizzaIngredient(String label) {
+    Ingredient(String label) {
         this.label = label;
     }
 

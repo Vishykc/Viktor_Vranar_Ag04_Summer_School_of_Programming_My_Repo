@@ -1,17 +1,53 @@
 package com.agency04.sbss.pizza.model;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "Customer")
 public class Customer {
+
+    @Id
+    @GeneratedValue
+    private long id;
+
+    @Column
     private String username;
-    private String name;
-    private String address;
+
+    @OneToOne
+    @JoinColumn(name = "CustomerDetails_id", referencedColumnName = "id")
+    private CustomerDetails customerDetails;
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public CustomerDetails getCustomerDetails() {
+        return customerDetails;
+    }
+
+    public void setCustomerDetails(CustomerDetails customerDetails) {
+        this.customerDetails = customerDetails;
+    }
+
+
+    //private Delivery deliveries;
+
+
+
+    /*private String name;
+    private String address;*/
 
     public Customer() {}
 
-    public Customer(String theUsername, String theName, String theAddress) {
+    /*public Customer(String theUsername, String theName, String theAddress) {
         name = theName;
         address = theAddress;
         username = theUsername;
-    }
+    }*/
 
     public String getUsername() {
         return username;
@@ -20,18 +56,18 @@ public class Customer {
         username = theUsername;
     }
 
-    public String getName() {
+    /*public String getName() {
         return name;
     }
     public void setName(String theName) {
         name = theName;
-    }
+    }*/
 
-    public String getAddress() {
+    /*public String getAddress() {
         return address;
     }
     public void setAddress(String theAddress) {
         address = theAddress;
 
-    }
+    }*/
 }

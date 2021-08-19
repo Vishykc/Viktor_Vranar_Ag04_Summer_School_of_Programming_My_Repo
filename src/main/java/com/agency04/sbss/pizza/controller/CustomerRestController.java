@@ -1,16 +1,18 @@
-package com.agency04.sbss.pizza.service;
+package com.agency04.sbss.pizza.controller;
 
-import com.agency04.sbss.pizza.model.Customer;
+import com.agency04.sbss.pizza.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.convert.ConversionService;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 
 @RestController
-@RequestMapping("/api/customer")
+@RequestMapping("/api/customers")
 public class CustomerRestController {
+
+/*
+    @Autowired
+    CustomerRepository customerRepository;*/
 
     @Autowired
     CustomerService customerService;
@@ -18,36 +20,53 @@ public class CustomerRestController {
     @Autowired
     ConversionService conversionService;
 
-    @GetMapping("/{userName}")
+   /* @GetMapping
+    public ResponseEntity<List<Customer>> getAllCustomers(){
+        return new ResponseEntity<>(customerRepository.findAll(), HttpStatus.OK);
+    }*/
+
+  /*  @Autowired
+    public CustomerRestController(CustomerRepository customerRepository){
+        this.customerRepository = customerRepository;
+    }*/
+
+
+
+    /*@GetMapping("/{userName}")
     public Customer getCustomer(@PathVariable String userName) {
+
 
         System.out.println(">> A GET HTTP request was made: /api/customer/" + userName);
         return customerService.findByUsername(customerService.getCustomersList(), userName);
 
-    }
+    }*/
 
-    @PostMapping
+  /*  @PostMapping
     public ResponseEntity<String> setCustomer(@RequestBody Customer customer) {
 
         System.out.println(">> A POST HTTP request was made: /api/customer and customer is added: " +
                 "\nusername: " + customer.getUsername() +
-                "\nname: " + customer.getName() +
-                "\naddress: " + customer.getAddress());
+                "\nfirst name: " + customer.getCustomerDetails().getFirstName() +
+                "\nlast name: " + customer.getCustomerDetails().getLastName() +
+                "\nphone: " + customer.getCustomerDetails().getPhone());
 
-        customerService.addCustomer(customer);
+        customerRepository.save(customer);
 
-        return new ResponseEntity<>(HttpStatus.CREATED);
+        //customerService.addCustomer(customer);
+
+        return new ResponseEntity<>(HttpStatus.CREATED);*/
     }
 
-    @PutMapping
+    /*@PutMapping
     public ResponseEntity<Customer> updateCustomer(@RequestBody Customer customer) {
 
         customerService.updateCustomer(customer);
 
         System.out.println(">> A PUT HTTP request was made: /api/customer and customer is updated: " +
                 "\nusername: " + customer.getUsername() +
-                "\nname: " + customer.getName() +
-                "\naddress: " + customer.getAddress());
+                "\nfirst name: " + customer.getCustomerDetails().getFirstName() +
+                "\nlast name: " + customer.getCustomerDetails().getLastName() +
+                "\nphone: " + customer.getCustomerDetails().getPhone());
 
         return new ResponseEntity<>(customer, HttpStatus.OK);
     }
@@ -60,5 +79,5 @@ public class CustomerRestController {
         customerService.deleteCustomerByUsername(username);
 
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-    }
-}
+    }*/
+//}

@@ -1,5 +1,6 @@
 package com.agency04.sbss.pizza.service;
 
+import com.agency04.sbss.pizza.exception.CustomerNotFoundException;
 import com.agency04.sbss.pizza.model.Customer;
 import org.springframework.stereotype.Service;
 
@@ -18,9 +19,9 @@ public class CustomerService {
 
         customersList = new ArrayList<>();
 
-        customersList.add(new Customer("vvranar", "Viktor Vranar", "Jordanovac 115, 10 000 Zagreb"));
+        /*customersList.add(new Customer("vvranar", "Viktor Vranar", "Jordanovac 115, 10 000 Zagreb"));
         customersList.add(new Customer("ihorvat", "Ivan Horvat", "Neka Ulica 100, 10 000 Zagreb"));
-        customersList.add(new Customer("mdedic", "Matija Dedic", "Jazzovska 99, 10 000 Zagreb"));
+        customersList.add(new Customer("mdedic", "Matija Dedic", "Jazzovska 99, 10 000 Zagreb"));*/
     }
 
     public Collection<Customer> getCustomersList() {

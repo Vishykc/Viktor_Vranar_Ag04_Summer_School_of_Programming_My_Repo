@@ -10,7 +10,7 @@ import java.util.Collection;
 public class SecondPizzeriaService implements PizzeriaService{
     private String name;
     private String address;
-    private Collection<Pizza> menu;
+    private Collection<PizzaInt> menu;
 
     public SecondPizzeriaService(){ }
 
@@ -44,20 +44,20 @@ public class SecondPizzeriaService implements PizzeriaService{
     }
 
     @Override
-    public void makePizza(Pizza thePizza) {
+    public void makePizza(PizzaInt thePizzaInt) {
         System.out.println("A delicious pizza has been made by SecondPizzeriaService!()");
     }
 
     @Override
-    public Collection<Pizza> getMenu() {
+    public Collection<PizzaInt> getMenu() {
         return menu;
     }
 
-    public void setMenu(Collection<Pizza> menu) {
+    public void setMenu(Collection<PizzaInt> menu) {
         this.menu = menu;
     }
 
-    public Pizza findPizzaByName(Collection<Pizza> pizzasList, String name) {
+    public PizzaInt findPizzaByName(Collection<PizzaInt> pizzasList, String name) {
         return pizzasList.stream().filter(pizza -> name.equals(pizza.getName())).findFirst().orElse(null);
     }
 

@@ -3,7 +3,7 @@ package com.agency04.sbss.pizza.model;
 import java.util.ArrayList;
 import java.util.Collection;
 
-public class QuattroStagioniPizza implements Pizza {
+public class QuattroStagioniPizza implements PizzaInt {
     private final String name;
     private final Collection<String> ingredients;
 
@@ -11,12 +11,12 @@ public class QuattroStagioniPizza implements Pizza {
         System.out.println(">> QuattroStagioniPizza: inside of QuattroStagioniPizza() constructor");
         name = "QuattroStagioni";
         ingredients = new ArrayList<>();
-        ingredients.add(PizzaIngredient.TOS.getLabel());
-        ingredients.add(PizzaIngredient.MOZ.getLabel());
-        ingredients.add(PizzaIngredient.HAM.getLabel());
-        ingredients.add(PizzaIngredient.ART.getLabel());
-        ingredients.add(PizzaIngredient.OLI.getLabel());
-        ingredients.add(PizzaIngredient.ORE.getLabel());
+        ingredients.add(Ingredient.TOS.getLabel());
+        ingredients.add(Ingredient.MOZ.getLabel());
+        ingredients.add(Ingredient.HAM.getLabel());
+        ingredients.add(Ingredient.ART.getLabel());
+        ingredients.add(Ingredient.OLI.getLabel());
+        ingredients.add(Ingredient.ORE.getLabel());
     }
 
     @Override

@@ -1,6 +1,8 @@
 package com.agency04.sbss.pizza.model;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "pizza")
@@ -12,9 +14,14 @@ public class Pizza {
 
     private String name;
 
-    @ManyToOne
-    @JoinColumn(name = "pizzaOrder_id")
-    private PizzaOrder pizzaOrder;
+    //private List<Ingredient> ingredients;
+
+    @OneToMany(
+            mappedBy = "pizza",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true
+    )
+    private List<PizzaOrder> pizzaOrders = new ArrayList<>();
 
     public String getName() {
         return name;
@@ -23,10 +30,9 @@ public class Pizza {
         this.name = name;
     }
 
-    public PizzaOrder getPizzaOrder() {
-        return pizzaOrder;
+    public void setPizzaOrders(List<PizzaOrder> pizzaOrders) {
+        this.pizzaOrders = pizzaOrders;
     }
-    public void setPizzaOrder(PizzaOrder pizzaOrder) {
-        this.pizzaOrder = pizzaOrder;
-    }
+
+
 }

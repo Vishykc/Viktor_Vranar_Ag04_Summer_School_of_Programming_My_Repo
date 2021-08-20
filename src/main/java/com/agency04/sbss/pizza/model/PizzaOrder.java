@@ -1,6 +1,8 @@
 package com.agency04.sbss.pizza.model;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -22,17 +24,19 @@ public class PizzaOrder {
     @ManyToOne()
     private Delivery delivery;
 
-    @OneToMany(
-            mappedBy = "pizzaOrder",
-            cascade = CascadeType.ALL,
-            orphanRemoval = true
-    )
-    private List<Pizza> pizzas = new ArrayList<>();
+    @ManyToOne
+    @JsonIgnore
+    @JoinColumn(name = "pizza_id")
+    private Pizza pizza;
+
+    public PizzaOrder(){}
+
+    public Pizza getPizza() {return pizza;}
+    public void setPizza(Pizza pizza) {this.pizza = pizza;}
 
     public String getQuantity() {
         return quantity;
     }
-
     public void setQuantity(String quantity) {
         this.quantity = quantity;
     }
@@ -40,7 +44,6 @@ public class PizzaOrder {
     public Size getSize() {
         return size;
     }
-
     public void setSize(Size size) {
         this.size = size;
     }
@@ -48,16 +51,9 @@ public class PizzaOrder {
     public Delivery getDelivery() {
         return delivery;
     }
-
     public void setDelivery(Delivery delivery) {
         this.delivery = delivery;
     }
 
-    public List<Pizza> getPizzas() {
-        return pizzas;
-    }
 
-    public void setPizzas(List<Pizza> pizzas) {
-        this.pizzas = pizzas;
-    }
 }

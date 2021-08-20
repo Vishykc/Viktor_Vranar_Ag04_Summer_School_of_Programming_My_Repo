@@ -81,7 +81,8 @@ public class CommandLineAppStartupRunner implements CommandLineRunner {
         customer.setDeliveries(deliveries);
         customerRepository.save(customer);
 
-        // Initial data for Delivery-PizzaOrder relationship
+
+        //Initial data for Delivery-PizzaOrder relationship
         Delivery delivery = new Delivery();
         java.util.Date date3 = new java.util.Date();
         delivery.setSubmissionDate(date3);
@@ -100,5 +101,24 @@ public class CommandLineAppStartupRunner implements CommandLineRunner {
 
         delivery.setPizzaOrders(pizzaOrders);
         deliveryRepository.save(delivery);
+
+        //Initial data for Pizza-PizzaOrder relationship
+        Pizza pizza = new Pizza();
+        pizza.setName("Diavola");
+
+        PizzaOrder pizzaOrder3 = new PizzaOrder();
+        pizzaOrder1.setQuantity("7");
+        pizzaOrder1.setSize(Size.S);
+        pizzaOrder1.setPizza(pizza);
+
+        PizzaOrder pizzaOrder4 = new PizzaOrder();
+        pizzaOrder1.setQuantity("999");
+        pizzaOrder1.setSize(Size.L);
+        pizzaOrder1.setPizza(pizza);
+
+        List<PizzaOrder> pizzaOrdersNew = Arrays.asList(pizzaOrder3, pizzaOrder4);
+        pizza.setPizzaOrders(pizzaOrdersNew);
+        pizzaRepository.save(pizza);
+
     }
 }

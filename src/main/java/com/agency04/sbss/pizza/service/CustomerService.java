@@ -18,10 +18,6 @@ public class CustomerService {
     public void doMyStartupStuff() {
 
         customersList = new ArrayList<>();
-
-        /*customersList.add(new Customer("vvranar", "Viktor Vranar", "Jordanovac 115, 10 000 Zagreb"));
-        customersList.add(new Customer("ihorvat", "Ivan Horvat", "Neka Ulica 100, 10 000 Zagreb"));
-        customersList.add(new Customer("mdedic", "Matija Dedic", "Jazzovska 99, 10 000 Zagreb"));*/
     }
 
     public Collection<Customer> getCustomersList() {
@@ -54,5 +50,4 @@ public class CustomerService {
         Customer tempCustomer = findByUsername(getCustomersList(), username);
         getCustomersList().removeIf(c -> c.getUsername().equals(username));
     }
-
 }

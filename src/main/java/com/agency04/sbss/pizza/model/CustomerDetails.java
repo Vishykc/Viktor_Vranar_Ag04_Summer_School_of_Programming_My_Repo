@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "CustomerDetails")
+@Table(name = "customerDetails")
 public class CustomerDetails {
 
     @Id
@@ -25,10 +25,6 @@ public class CustomerDetails {
     @OneToOne(mappedBy = "customerDetails")
     private Customer customer;
 
-    public Long getId() {
-        return id;
-    }
-
     public CustomerDetails() {}
 
     public CustomerDetails(String firstName, String lastName, String phone) {
@@ -37,6 +33,9 @@ public class CustomerDetails {
         this.phone = phone;
     }
 
+    public Long getId() {
+        return id;
+    }
     public void setId(Long id) {
         this.id = id;
     }
@@ -44,7 +43,6 @@ public class CustomerDetails {
     public String getFirstName() {
         return firstName;
     }
-
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
@@ -52,7 +50,6 @@ public class CustomerDetails {
     public String getLastName() {
         return lastName;
     }
-
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
@@ -60,7 +57,6 @@ public class CustomerDetails {
     public String getPhone() {
         return phone;
     }
-
     public void setPhone(String phone) {
         this.phone = phone;
     }
@@ -68,7 +64,6 @@ public class CustomerDetails {
     public Customer getCustomer() {
         return customer;
     }
-
     public void setCustomer(Customer customer) {
         this.customer = customer;
     }

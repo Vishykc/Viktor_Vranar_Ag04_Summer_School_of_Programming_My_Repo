@@ -22,5 +22,4 @@ public enum Ingredient {
     Ingredient(String label) {
         this.label = label;
     }
-
 }

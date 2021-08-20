@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "Customer")
+@Table(name = "customer")
 public class Customer {
 
     @Id
@@ -19,8 +19,6 @@ public class Customer {
     @JoinColumn(name = "CustomerDetails_id", referencedColumnName = "id")
     private CustomerDetails customerDetails;
 
-
-
     @OneToMany(
             mappedBy = "customer",
             cascade = CascadeType.ALL,
@@ -28,74 +26,26 @@ public class Customer {
     )
     private List<Delivery> deliveries = new ArrayList<>();
 
+    public Customer() {}
 
-
-
-
-
-
-
-
-
-    public void setDeliveries(List<Delivery> deliveries) {
-        this.deliveries = deliveries;
+    public String getUsername() {
+        return username;
     }
-
-
-
-
-
-
-
-
-
-    public Long getId() {
-        return id;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public CustomerDetails getCustomerDetails() {
         return customerDetails;
     }
-
     public void setCustomerDetails(CustomerDetails customerDetails) {
         this.customerDetails = customerDetails;
     }
 
-
-    //private Delivery deliveries;
-
-
-
-    /*private String name;
-    private String address;*/
-
-    public Customer() {}
-
-    /*public Customer(String theUsername, String theName, String theAddress) {
-        name = theName;
-        address = theAddress;
-        username = theUsername;
-    }*/
-
-    public String getUsername() {
-        return username;
+    public List<Delivery> getDeliveries() {
+        return deliveries;
     }
-    public void setUsername(String theUsername) {
-        username = theUsername;
+    public void setDeliveries(List<Delivery> deliveries) {
+        this.deliveries = deliveries;
     }
-
-    /*public String getName() {
-        return name;
-    }
-    public void setName(String theName) {
-        name = theName;
-    }*/
-
-    /*public String getAddress() {
-        return address;
-    }
-    public void setAddress(String theAddress) {
-        address = theAddress;
-
-    }*/
 }

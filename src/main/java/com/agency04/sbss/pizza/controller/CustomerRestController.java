@@ -33,25 +33,19 @@ public class CustomerRestController {
     ConversionService conversionService;
 
     @GetMapping
-    public ResponseEntity<List<Customer>> getAllCustomers(){
+    public ResponseEntity<List<Customer>> getAllCustomers() {
         return new ResponseEntity<>(customerRepository.findAll(), HttpStatus.OK);
     }
 
     @GetMapping("/{customerId}")
-    public ResponseEntity<Customer> findCustomerById(@PathVariable String customerId){
-        /*Long id = conversionService.convert(customerId, Long.class);
-        Optional<Customer> foundCustomer = customerRepository.findById(id);
+    public ResponseEntity<Customer> findCustomerById(@PathVariable String customerId) {
 
-        if(foundCustomer.isPresent())*/
-
-
-        Long id = conversionService.convert(customerId, Long.class);
+        Long id = Long.valueOf(customerId);
         return new ResponseEntity<>(customerRepository.findById(id).orElse(null), HttpStatus.OK);
     }
 
-
     @PostMapping
-    public ResponseEntity<Customer> createCustomer(@RequestBody CustomerForm customerForm){
+    public ResponseEntity<Customer> createCustomer(@RequestBody CustomerForm customerForm) {
 
         CustomerDetails customerDetails = customerForm.getCustomerDetails();
         customerDetailsRepository.save(customerDetails);
@@ -67,90 +61,34 @@ public class CustomerRestController {
     @PutMapping("/{customerId}")
     public ResponseEntity<Customer> updateCustomer(@PathVariable Long id, @RequestBody CustomerForm customerForm) {
 
-       Optional<Customer> optionalCustomer = customerRepository.findById(id);
+        Optional<Customer> optionalCustomer = customerRepository.findById(id);
 
-       if(optionalCustomer.isPresent()) {
-           Customer oldCustomer = optionalCustomer.get();
-           CustomerDetails oldCustomerDetails = optionalCustomer.get().getCustomerDetails();
+        if (optionalCustomer.isPresent()) {
+            Customer oldCustomer = optionalCustomer.get();
+            CustomerDetails oldCustomerDetails = optionalCustomer.get().getCustomerDetails();
 
-           Customer newCustomer = customerForm.getCustomer();
-           CustomerDetails newCustomerDetails = customerForm.getCustomerDetails();
+            Customer newCustomer = customerForm.getCustomer();
+            CustomerDetails newCustomerDetails = customerForm.getCustomerDetails();
 
-           oldCustomer.setUsername(newCustomer.getUsername());
-           oldCustomer.setCustomerDetails(newCustomerDetails);
-           customerRepository.save(oldCustomer);
+            oldCustomer.setUsername(newCustomer.getUsername());
+            oldCustomer.setCustomerDetails(newCustomerDetails);
+            customerRepository.save(oldCustomer);
 
-           return new ResponseEntity<>(oldCustomer, HttpStatus.OK);
+            return new ResponseEntity<>(oldCustomer, HttpStatus.OK);
 
-       }
+        }
 
         return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteUser(@PathVariable String id) {
-        Long theId = conversionService.convert(id, Long.class);
+        Long theId = Long.valueOf(id);
 
         customerRepository.deleteById(theId);
 
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
+}
 
 
-
-  /*  @Autowired
-    public CustomerRestController(CustomerRepository customerRepository){
-        this.customerRepository = customerRepository;
-    }*/
-
-
-
-    /*@GetMapping("/{userName}")
-    public Customer getCustomer(@PathVariable String userName) {
-
-
-        System.out.println(">> A GET HTTP request was made: /api/customer/" + userName);
-        return customerService.findByUsername(customerService.getCustomersList(), userName);
-
-    }*/
-
-  /*  @PostMapping
-    public ResponseEntity<String> setCustomer(@RequestBody Customer customer) {
-
-        System.out.println(">> A POST HTTP request was made: /api/customer and customer is added: " +
-                "\nusername: " + customer.getUsername() +
-                "\nfirst name: " + customer.getCustomerDetails().getFirstName() +
-                "\nlast name: " + customer.getCustomerDetails().getLastName() +
-                "\nphone: " + customer.getCustomerDetails().getPhone());
-
-        customerRepository.save(customer);
-
-        //customerService.addCustomer(customer);
-
-        return new ResponseEntity<>(HttpStatus.CREATED);*/
-    }
-
-    /*@PutMapping
-    public ResponseEntity<Customer> updateCustomer(@RequestBody Customer customer) {
-
-        customerService.updateCustomer(customer);
-
-        System.out.println(">> A PUT HTTP request was made: /api/customer and customer is updated: " +
-                "\nusername: " + customer.getUsername() +
-                "\nfirst name: " + customer.getCustomerDetails().getFirstName() +
-                "\nlast name: " + customer.getCustomerDetails().getLastName() +
-                "\nphone: " + customer.getCustomerDetails().getPhone());
-
-        return new ResponseEntity<>(customer, HttpStatus.OK);
-    }
-
-    @DeleteMapping("/{username}")
-    public ResponseEntity<String> deleteCustomerByUsername(@PathVariable String username) {
-
-        System.out.println(">> A DELETE HTTP request was made: /api/customer/" + username);
-
-        customerService.deleteCustomerByUsername(username);
-
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-    }*/
-//}

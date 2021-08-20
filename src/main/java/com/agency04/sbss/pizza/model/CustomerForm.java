@@ -8,7 +8,6 @@ public class CustomerForm {
     public Customer getCustomer() {
         return customer;
     }
-
     public void setCustomer(Customer customer) {
         this.customer = customer;
     }
@@ -16,7 +15,6 @@ public class CustomerForm {
     public CustomerDetails getCustomerDetails() {
         return customerDetails;
     }
-
     public void setCustomerDetails(CustomerDetails customerDetails) {
         this.customerDetails = customerDetails;
     }

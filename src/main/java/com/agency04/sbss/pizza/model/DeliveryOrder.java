@@ -9,12 +9,11 @@ public class DeliveryOrder {
     private Customer delCustomer;
     private Collection<PizzaOrderItem> delPizzaOrderDetails;
 
+    public DeliveryOrder() { }
     public DeliveryOrder(Customer delCustomer, Collection<PizzaOrderItem> delPizzaOrderDetails) {
         this.delCustomer = delCustomer;
         this.delPizzaOrderDetails = delPizzaOrderDetails;
     }
-
-    public DeliveryOrder() { }
 
     public Customer getDelCustomer() {
         return delCustomer;

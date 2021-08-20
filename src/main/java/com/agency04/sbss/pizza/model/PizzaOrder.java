@@ -16,6 +16,19 @@ public class PizzaOrder {
     @Column
     private String quantity;
 
+    @Column
+    private Size size;
+
+    @ManyToOne()
+    private Delivery delivery;
+
+    @OneToMany(
+            mappedBy = "pizzaOrder",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true
+    )
+    private List<Pizza> pizzas = new ArrayList<>();
+
     public String getQuantity() {
         return quantity;
     }
@@ -40,14 +53,6 @@ public class PizzaOrder {
         this.delivery = delivery;
     }
 
-    @Column
-    private Size size;
-
-    @ManyToOne()
-    @JoinColumn(name = "delivery_id")
-    private Delivery delivery;
-
-
     public List<Pizza> getPizzas() {
         return pizzas;
     }
@@ -55,15 +60,4 @@ public class PizzaOrder {
     public void setPizzas(List<Pizza> pizzas) {
         this.pizzas = pizzas;
     }
-
-    @OneToMany(
-            mappedBy = "pizzaOrder",
-            cascade = CascadeType.ALL,
-            orphanRemoval = true
-    )
-    private List<Pizza> pizzas = new ArrayList<>();
-
-
-
-
 }

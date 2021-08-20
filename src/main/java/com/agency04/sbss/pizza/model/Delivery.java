@@ -6,47 +6,12 @@ import java.util.Date;
 import java.util.List;
 
 @Entity
-@Table(name = "Delivery")
+@Table(name = "delivery")
 public class Delivery {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-
-    public Delivery() {
-
-    }
-
-    public void setPizzaOrders(List<PizzaOrder> pizzaOrders) {
-        this.pizzaOrders = pizzaOrders;
-    }
-
-    public Date getSubmissionDate() {
-        return submissionDate;
-    }
-
-    public void setSubmissionDate(Date submissionDate) {
-        this.submissionDate = submissionDate;
-    }
-
-    public Delivery(Customer customer, Date submissionDate) {
-        this.customer = customer;
-        this.submissionDate = submissionDate;
-    }
-
-    @ManyToOne
-    @JoinColumn(name = "customer_id")
-    private Customer customer;
-
-    @Column
-    private Date submissionDate;
-
-
-
-
-
-
 
     @OneToMany(
             mappedBy = "delivery",
@@ -56,5 +21,32 @@ public class Delivery {
     )
     private List<PizzaOrder> pizzaOrders = new ArrayList<>();
 
+    @Column
+    private Date submissionDate;
+
+    //@JoinColumn(name = "customer_id")
+    @ManyToOne
+    private Customer customer;
+
+
+    public Delivery() {
+
+    }
+
+    public Delivery(Customer customer, Date submissionDate) {
+        this.customer = customer;
+        this.submissionDate = submissionDate;
+    }
+
+    public void setPizzaOrders(List<PizzaOrder> pizzaOrders) {
+        this.pizzaOrders = pizzaOrders;
+    }
+
+    public Date getSubmissionDate() {
+        return submissionDate;
+    }
+    public void setSubmissionDate(Date submissionDate) {
+        this.submissionDate = submissionDate;
+    }
 
 }

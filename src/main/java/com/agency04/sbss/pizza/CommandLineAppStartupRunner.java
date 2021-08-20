@@ -6,11 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
-import javax.persistence.Column;
-import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Date;
 import java.util.List;
 
 @Component
@@ -46,7 +42,6 @@ public class CommandLineAppStartupRunner implements CommandLineRunner {
         firstCustomer.setCustomerDetails(firstCustomerDetails);
         customerRepository.save(firstCustomer);
 
-
         // Second initial customer and the details
         CustomerDetails secondCustomerDetails = new CustomerDetails();
         secondCustomerDetails.setFirstName("Matija");
@@ -58,7 +53,6 @@ public class CommandLineAppStartupRunner implements CommandLineRunner {
         secondCustomer.setUsername("mdedic");
         secondCustomer.setCustomerDetails(secondCustomerDetails);
         customerRepository.save(secondCustomer);
-
 
         // Third initial customer and the details
         CustomerDetails thirdCustomerDetails = new CustomerDetails();
@@ -72,8 +66,7 @@ public class CommandLineAppStartupRunner implements CommandLineRunner {
         thirdCustomer.setCustomerDetails(thirdCustomerDetails);
         customerRepository.save(thirdCustomer);
 
-
-
+        // Initial data for Customer-Delivery relationship
         Customer customer = new Customer();
         customer.setUsername("mostovic");
 
@@ -88,43 +81,7 @@ public class CommandLineAppStartupRunner implements CommandLineRunner {
         customer.setDeliveries(deliveries);
         customerRepository.save(customer);
 
-
-
-       /* PizzaOrder pizzaOrder = new PizzaOrder();
-        pizzaOrder.setQuantity("5");
-        pizzaOrder.setSize(Size.S);
-
-        Pizza pizza1 = new Pizza();
-        pizza1.setName("Diavola");
-        List<Ingredient> ingredients1 = new ArrayList<>();
-        ingredients1.add(Ingredient.TOS);
-        ingredients1.add(Ingredient.MOZ);
-        ingredients1.add(Ingredient.SPS);
-        ingredients1.add(Ingredient.CHI);
-
-        Pizza pizza2 = new Pizza();
-        pizza1.setName("Fontana");
-        List<Ingredient> ingredients2 = new ArrayList<>();
-        ingredients2.add(Ingredient.TOS);
-        ingredients2.add(Ingredient.MOZ);
-        ingredients2.add(Ingredient.GOR);
-        ingredients2.add(Ingredient.RAD);
-        ingredients2.add(Ingredient.PAR);
-
-        List<Pizza> pizzas = Arrays.asList(pizza1, pizza2);
-
-        pizzaOrder.setPizzas(pizzas);
-        pizzaOrderRepository.save(pizzaOrder);*/
-
-
-
-
-
-
-
-
-
-
+        // Initial data for Delivery-PizzaOrder relationship
         Delivery delivery = new Delivery();
         java.util.Date date3 = new java.util.Date();
         delivery.setSubmissionDate(date3);
@@ -143,10 +100,5 @@ public class CommandLineAppStartupRunner implements CommandLineRunner {
 
         delivery.setPizzaOrders(pizzaOrders);
         deliveryRepository.save(delivery);
-
-
-
-
-
     }
 }

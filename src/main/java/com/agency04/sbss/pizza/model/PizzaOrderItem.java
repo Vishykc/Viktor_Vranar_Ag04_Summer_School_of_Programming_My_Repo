@@ -1,7 +1,5 @@
 package com.agency04.sbss.pizza.model;
 
-import org.springframework.stereotype.Component;
-
 import javax.annotation.PostConstruct;
 
 public class PizzaOrderItem {
@@ -10,18 +8,15 @@ public class PizzaOrderItem {
     private String size;
     private int quantity;
 
+    public PizzaOrderItem() {}
     public PizzaOrderItem(String pizza, String size, int quantity) {
         this.pizza = pizza;
         this.size = size;
         this.quantity = quantity;
     }
 
-    public PizzaOrderItem() {}
-
      @PostConstruct
-     public void doMyStartupStuff() {
-
-     }
+     public void doMyStartupStuff() {}
 
     public String getPizza() {
         return pizza;

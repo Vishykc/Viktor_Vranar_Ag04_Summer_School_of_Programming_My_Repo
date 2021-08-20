@@ -3,7 +3,7 @@ package com.agency04.sbss.pizza.model;
 import java.util.ArrayList;
 import java.util.Collection;
 
-public class FontanaPizza implements Pizza {
+public class FontanaPizza implements PizzaInt {
     private final String name;
     private final Collection<String> ingredients;
 
@@ -11,11 +11,11 @@ public class FontanaPizza implements Pizza {
         System.out.println(">> FontanaPizza: inside of FontanaPizza() constructor");
         name = "Fontana";
         ingredients = new ArrayList<>();
-        ingredients.add(PizzaIngredient.TOS.getLabel());
-        ingredients.add(PizzaIngredient.MOZ.getLabel());
-        ingredients.add(PizzaIngredient.GOR.getLabel());
-        ingredients.add(PizzaIngredient.RAD.getLabel());
-        ingredients.add(PizzaIngredient.PAR.getLabel());
+        ingredients.add(Ingredient.TOS.getLabel());
+        ingredients.add(Ingredient.MOZ.getLabel());
+        ingredients.add(Ingredient.GOR.getLabel());
+        ingredients.add(Ingredient.RAD.getLabel());
+        ingredients.add(Ingredient.PAR.getLabel());
     }
 
     @Override

@@ -1,6 +1,8 @@
-package com.agency04.sbss.pizza.service;
+package com.agency04.sbss.pizza.controller;
 
-import com.agency04.sbss.pizza.model.Pizza;
+import com.agency04.sbss.pizza.model.PizzaInt;
+import com.agency04.sbss.pizza.service.PizzaDeliveryService;
+import com.agency04.sbss.pizza.service.PizzeriaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,7 +25,7 @@ public class PizzeriaRestController {
     }
 
     @GetMapping("/menu")
-    public Collection<Pizza> getMenu() {
+    public Collection<PizzaInt> getMenu() {
 
         System.out.println(">> A GET HTTP request was made: /api/pizzeria/menu");
         return pizzaDeliveryService.getMenuFromFirstPizzeria();

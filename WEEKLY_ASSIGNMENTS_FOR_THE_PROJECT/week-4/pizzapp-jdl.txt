@@ -1,0 +1,50 @@
+entity Delivery {
+	customer Customer,
+    submissionDate Date,
+    pizzaOrders PizzaOrder
+}
+
+entity Customer {
+	username String,
+    customerDetails CustomerDetails,
+    deliveries Delivery
+}
+
+entity CustomerDetails {
+	firstName String,
+    lastName String,
+    phone String,
+}
+
+entity PizzaOrder {
+	pizza Pizza,
+	quantity String,
+	size Size
+}
+
+entity Pizza {
+	name String,
+    ingredients Ingredient
+}
+
+enum Size {
+    SMALL,
+    MEDIUM,
+    LARGE
+}
+
+relationship OneToOne {
+	Customer to CustomerDetails
+}
+
+relationship ManyToOne {
+	PizzaOrder{pizza} to Pizza
+}
+
+relationship OneToMany {
+	Customer{deliveries} to Delivery
+}
+
+relationship OneToMany {
+	Delivery{pizzaOrders} to PizzaOrder
+}
